@@ -1,9 +1,17 @@
-import { useState } from 'react'
-
-function App() {
-  const [count, setCount] = useState(0)
+import Kebab from './Kebaby.jsx'
 
   
+
+export default function ShowApps()
+{
+  return(
+    <section>
+      <Kebab />
+      <Kebab />
+      <Kebab />
+    </section>
+    
+  );
 }
 
-export default App
+
