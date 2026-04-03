@@ -64,6 +64,7 @@
     color: var(--color-casual);
     font-size: var(--font-size-casual);
     transition: background-color 0.2s ease;
+    cursor: pointer;
 }
 .headerButton :hover 
 {
@@ -158,6 +159,7 @@
     
     transition: background-color 0.2s ease;
     transition: all 0.2s ease;
+    cursor: pointer;
     
 }
 .frontButton :hover
