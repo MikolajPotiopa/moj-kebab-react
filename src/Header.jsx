@@ -2,8 +2,8 @@ import TopNav from "./Navigation";
 import Button from "./Button";
 import Img from "./Img";
 import Text from "./Text";
+import Link from "./Link";
 import {texts} from "./Texts"
-import Facebook from "./FacebookLogo";
 
 export default function Header()
 {
@@ -31,10 +31,8 @@ export default function Header()
                     <Button className={'frontButton slide'} value={'Zamów online'} ></Button>
                 </div>
                 <div className="favebookDiv">
-                    <Facebook></Facebook> 
+                    <Link className={'facebook'} href={''} value={'f'} ></Link>
                 </div>
-                
-
             </div>
         </div>
     );

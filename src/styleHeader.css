@@ -104,7 +104,7 @@
 .bottomHeader
 {
     height: 800px ;
-    padding-top: 100px;
+    padding-top: 150px;
 }
 .frontTexts
 {
@@ -123,6 +123,7 @@
     font-family: 'Great Vibes',cursive;
     text-align: center;
     opacity: 0;
+    padding-bottom: 20px;
 }
 .secondText
 {
@@ -166,28 +167,46 @@
     border: 4px solid  rgba(223, 152, 0,0.2);
     transform: scale(1.05);
 }
-.facebookDiv
-{
-    padding-top: 100px;
-}
+
 .facebook
 {
+    display: block;
     width: 50px;
     height: 50px;
-  
-    background-color: #000000;
-    text-align: center;
-    border-radius: 50%;
-    
+    text-decoration: none;
 }
-.facebook 
+
+.facebook:hover div
 {
-    
+    transform: scale(1.05);
+    background-color: #000000;
+    border: 4px solid  rgba(223, 152, 0,0.2);
+    color: var(--color-orange);
+}
+.facebook div
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-orange);
+    color: #000000;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+
     font-size: 30px;
     font-weight: 400;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:  sans-serif;
     text-decoration: none;
-    color: #000000;
+    
+    transition: all 0.2s ease;
+    border: 4px solid transparent;
+}
+.favebookDiv
+{
+    padding-top: 120px;
+    padding-left: 120px;
 }
 
 
