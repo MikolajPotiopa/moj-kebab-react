@@ -1,7 +1,7 @@
 import TimeOpen from "./TimeOpen";
 import Localisation from "./Localisation";
 import OnlineReservation from "./OnlineReservation";
-import DateFunction from "./DateFunction";
+import Today from "./DateFunction";
 
 export default function Inside()
 {
@@ -11,7 +11,7 @@ export default function Inside()
                 <Localisation></Localisation>
                 <TimeOpen></TimeOpen>
                 <OnlineReservation></OnlineReservation>
-                <DateFunction></DateFunction>
+                <Today></Today>
             </div>
             
         </div>
