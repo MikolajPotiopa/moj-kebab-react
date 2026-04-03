@@ -1,5 +1,6 @@
 import Icon from "./Icons";
 import Text from "./Text";
+import Today from "./DateFunction";
 
 
 export default function TimeOpen()
@@ -9,7 +10,7 @@ export default function TimeOpen()
     <div className="secondBox">
         <Icon></Icon>
         <Text className={'secondBoxTitle'} text={'Godziny otwarcia'}></Text>
-        {/*zrobic liste godzin*/}
+        <Today ></Today>
     </div>
     
     );

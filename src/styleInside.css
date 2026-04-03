@@ -80,9 +80,73 @@
     
     background-color: #FFFFFF;
 }
-.secondBoxButton button
+
+.secondBoxText
 {
-    width: 300px;
-    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    
+}
+.secondBoxButton 
+{
+    color: #FFFFFF;
+}
+.secondBoxText div button
+{
+    background-color: transparent;
+    border: 0px solid black;
+}
+.secondBoxButton ul li
+{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    width: 190px;
+
+    color: var(--color-casual);
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.5;
+   
+}
+.secondBoxDays
+{
+    width: 100px;
+}
+.secondBoxDni
+{
+    display: flex;
+    width: 190px;
+
+    color: var(--color-casual);
+    font-family: sans-serif;
+    font-weight: 400;
+    
+}
+.secondBoxDni div
+{
+    
+    width: 100px;
+}
+
+
+.slideList
+{
+    
+}
+@keyframes slideList {
+    from
+    {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to
+    {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
 }
 

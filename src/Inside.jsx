@@ -11,7 +11,6 @@ export default function Inside()
                 <Localisation></Localisation>
                 <TimeOpen></TimeOpen>
                 <OnlineReservation></OnlineReservation>
-                <Today></Today>
             </div>
             
         </div>
