@@ -16,7 +16,7 @@
 {
     background-image: linear-gradient(rgba(0,0,0,0.7)),url("/Img/doorPhoto.png");
     background-size: cover;       
-    background-position-y: 30%;  
+    background-position-y: 40%;  
     background-repeat: no-repeat; 
     
 }
@@ -92,4 +92,26 @@
     text-decoration: none;
     color: var(--color-casual);
     transition: color 0.2s ease;
+}
+
+/*BottomHeader*/
+
+.bottomHeader
+{
+    height: 800px ;
+}
+.frontTexts
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.firstText
+{
+
+}
+.secondText
+{
+    
 }
