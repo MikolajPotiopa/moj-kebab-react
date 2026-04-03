@@ -1,0 +1,95 @@
+
+:root
+{
+    --font-size-casual:15px;
+    --color-casual:#FFFFFF;
+    --color-orange: rgb(223, 152, 0);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header
+{
+    background-image: linear-gradient(rgba(0,0,0,0.7)),url("/Img/doorPhoto.png");
+    background-size: cover;       
+    background-position-y: 30%;  
+    background-repeat: no-repeat; 
+    
+}
+.topHeader
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    
+}
+.headerImg
+{
+
+    height: 120px;
+    padding-left: 120px;
+    padding-right: 20px;
+    
+}
+.headerImg img
+{
+    max-width: 110px;
+    height: 120px;
+}
+.headerButton
+{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.headerButton button
+{
+    width: 150px;
+    height: 38px;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid  var(--color-orange);
+    color: var(--color-casual);
+    font-size: var(--font-size-casual);
+    transition: background-color 0.2s ease;
+}
+.headerButton :hover 
+{
+    background-color:  var(--color-orange);
+    color: black;
+}
+.navigationBar
+{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    width: 70%;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    
+    
+}
+.topNav
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.topNav:hover a 
+{
+    color: var(--color-orange);
+}
+.topNav a
+{
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--color-casual);
+    transition: color 0.2s ease;
+}
