@@ -3,6 +3,7 @@ import Button from "./Button";
 import Img from "./Img";
 import Text from "./Text";
 import {texts} from "./Texts"
+import Facebook from "./FacebookLogo";
 
 export default function Header()
 {
@@ -20,12 +21,17 @@ export default function Header()
                 </div>
                 <Button className={'headerButton'} value={'Zamów online'}/>
             </div>
-            
+
             <div className="bottomHeader">
                 <div className="frontTexts">
-                    <Text className={'firstText'} text={texts[0]}></Text>
-                    <Text className={'secondText'} text={texts[1]}></Text>
-                    <Button className={'frontButton'} value={'Zamów online'} ></Button>
+                    <div className="front">
+                        <Text className={'firstText popUp'} text={texts[0]}></Text>
+                        <Text className={'secondText slideDown'} text={texts[1]}></Text>
+                    </div>
+                    <Button className={'frontButton slide'} value={'Zamów online'} ></Button>
+                </div>
+                <div className="favebookDiv">
+                    <Facebook></Facebook> 
                 </div>
                 
 
