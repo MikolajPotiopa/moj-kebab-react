@@ -127,10 +127,6 @@
 {
     padding-bottom: 50px;
 }
-.frontButton
-{
-    opacity: 0;
-}
 .frontButton button
 {
     width: 200px;
@@ -141,9 +137,6 @@
     
     border: 4px rgba(0, 0,0,0);
     outline: none;
-    
-    transition: background-color 0.2s ease;
-    transition: all 0.2s ease;
     cursor: pointer;
     
 }
@@ -172,7 +165,7 @@
     font-family:  sans-serif;
     text-decoration: none;
     
-    transition: all 0.2s ease;
+
     /* border: 4px solid transparent; */
 }
 .favebookDiv
@@ -184,66 +177,3 @@
 
 
 
-
-
-
-
-
-.popUp
-{
-    
-    animation: popUp 1s ease-out forwards;
-    animation-delay: 0.1s;
-    
-}
-.slideDown
-{
-    
-    animation: slideDown 1s ease-out forwards;
-    animation-delay:0.5s ;
-}
-.slide
-{
-    animation: slide 1s ease-out forwards;
-    animation-delay:0.8s ;
-}
-
-
-
-@keyframes popUp {
-    from 
-    {
-        
-        opacity: 0;
-    }
-    to 
-    {
-       
-        opacity: 1;
-    }
-}
-@keyframes slideDown {
-    from{
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to
-    {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    
-}
-@keyframes slide {
-    from
-    {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to
-    {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    
-}

@@ -1,10 +1,10 @@
+import { motion } from "framer-motion";
 
-
-export default function Text({className,text})
+export default function Text({className,text,variant})
 {
     return(
-        <div className={className}>
+        <motion.div className={className} variants={variant} initial="initial" animate="animate">
             {text}
-        </div>
+        </motion.div>
     );
 }

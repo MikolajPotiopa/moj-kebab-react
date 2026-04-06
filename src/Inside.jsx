@@ -15,6 +15,10 @@ export default function Inside()
             scale: 1.05,
             transition:{duration:0.1}
         },
+        tapState:
+        {
+            scale:0.95
+        },
         initial:
         {
             backgroundColor: 'rgba(223, 152, 0,1)',
