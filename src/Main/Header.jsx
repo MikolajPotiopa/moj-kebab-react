@@ -1,10 +1,10 @@
 import { motion, AnimatePresence, scale, color, transform, easeIn } from "framer-motion";
-import TopNav from "./Navigation";
-import Button from "./Button";
-import Img from "./Img";
-import Text from "./Text";
-import Link from "./Link";
-import {texts} from "./Texts"
+import TopNav from "../headerComponents/Navigation.jsx";
+import Button from "../basicComponents/Button.jsx";
+import Img from "../basicComponents/Img.jsx";
+import Text from "../basicComponents/Text.jsx";
+import Link from "../basicComponents/Link.jsx";
+import {texts} from "../tablesOfData/Texts.jsx"
 import { 
     headerButtonVariant, 
     secondButtonVariant, 
@@ -12,7 +12,7 @@ import {
     facebookVariant,
     titleVariant,
     titleTextVariant
-} from "./variants.jsx";
+} from "../tablesOfData/variants.jsx";
 
 export default function Header()
 {

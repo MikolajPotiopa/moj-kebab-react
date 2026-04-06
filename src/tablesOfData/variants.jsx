@@ -47,7 +47,7 @@ export const secondButtonVariant =
     {
         opacity:1,
         y:0,
-        transition:{duration: 1,ease: "easeOut",delay:0.5}
+        transition:{duration: 1,ease: "easeOut",delay:1}
     }
 
 }
@@ -105,5 +105,116 @@ export const titleTextVariant=
         opacity:1,
         y:0,
         transition:{duration: 1,ease: "easeOut",delay:0.5}
+    }
+}
+
+export const onlineReservationVariant=
+{
+    hoverState:
+    {
+        backgroundColor: 'black',
+        color: 'rgba(223, 152, 0,1)',
+        border: '4px solid rgba(223, 152, 0,0.2)',
+        scale: 1.05,
+        transition:{duration:0.1}
+    },
+    tapState:
+    {
+        scale:0.95
+    },
+    initial:
+    {
+        backgroundColor: 'rgba(223, 152, 0,1)',
+        color: 'rgba(0,0,0,1)',
+        border: '4px rgba(0, 0,0,0)',
+        scale: 1.00,
+        opacity:0,
+        x:250
+    },
+    show:{
+        opacity:1,
+        x:0,
+        transition:{duration: 1,type: "spring", stiffness: 100,damping: 10 }
+    }
+}
+
+export const iconVariant=
+{
+    initial:{
+        opacity:0
+    },
+    show:{
+        opacity:1,
+        transition:{duration: 1,ease: "easeIn"}
+    }
+}
+export const titleBoxTextVariant=
+{
+    initial:{
+        opacity:0,
+        x:-250
+    },
+    show:{
+        opacity:1,
+        x:0,
+        transition:{duration: 1,type: "spring", stiffness: 100,damping: 10 }
+    }
+}
+export const boxTextVariant=
+{
+    initial:{
+        opacity:0,
+        x:250
+    },
+    show:{
+        opacity:1,
+        x:0,
+        transition:{duration: 1,type: "spring", stiffness: 100,damping: 10 }
+    }
+} 
+export const unOrderListVariant=
+{
+    initial:{
+        opacity:0
+    },
+    show:{
+        opacity:1,
+        transition:{staggerChildren:0.1}
+    },
+    exit:{
+        opacity:0,
+        transition:{
+            staggerChildren: 0.1,
+            staggerDirection: -1,
+            when: "afterChildren"
+        }
+    }
+}
+export const elementListVariant=
+{
+    initial:{
+        opacity:0,
+        y:-50
+    },
+    show:{
+        opacity:1,
+        y:0
+    },
+    exit:{
+        opacity:0,
+        y:-50
+    }
+}
+export const divVariant=
+{
+    initial:{
+        opacity:0,
+        
+    },
+    animate:{
+        opacity:1,
+    },
+    exit:{
+        opacity:0,
     }
 }

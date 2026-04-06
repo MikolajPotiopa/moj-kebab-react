@@ -9,7 +9,12 @@
 {
     height: 4000px;
     background-color: black;
-}    
+}   
+.boxes
+{
+    width: auto;
+    height: 500px;
+} 
 
 .icon
 {
@@ -85,19 +90,21 @@
 {
     display: flex;
     flex-direction: row;
-    justify-content: left;
-    
+    justify-content: flex-start;
+    align-items: flex-start; 
 }
-.secondBoxButton 
-{
-    color: #FFFFFF;
-}
-.secondBoxText div button
+
+.secondBoxText button
 {
     background-color: transparent;
-    border: 0px solid black;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
-.secondBoxButton ul li
+.slideList
 {
     display: flex;
     flex-direction: row;
@@ -132,33 +139,5 @@
 }
 
 
-.slideList
-{
-    opacity: 0;
-    animation: slideList 0.2s ease-out forwards;
-}
 
-
-@keyframes slideList {
-    from
-    {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to
-    {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-}
-.daysList {
-    overflow: hidden;
-    animation: expandContainer 0.4s ease-out;
-}
-
-@keyframes expandContainer {
-    from { max-height: 0; }
-    to { max-height: 500px; } /* Wpisz wartość większą niż cała lista */
-}
 
