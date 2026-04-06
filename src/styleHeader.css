@@ -17,7 +17,7 @@
 
 .header
 {
-    background-image: linear-gradient(rgba(0,0,0,0.7)),url("/Img/doorPhoto.png");
+   background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/Img/doorPhoto.png");
     background-size: cover;       
     background-position-y: 50%;  
     background-repeat: no-repeat; 
@@ -63,13 +63,7 @@
     border: 2px solid  var(--color-orange);
     color: var(--color-casual);
     font-size: var(--font-size-casual);
-    transition: background-color 0.2s ease;
     cursor: pointer;
-}
-.headerButton :hover 
-{
-    background-color:  var(--color-orange);
-    color: black;
 }
 .navigationBar
 {

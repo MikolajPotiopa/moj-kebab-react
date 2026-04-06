@@ -1,3 +1,4 @@
+import { motion, AnimatePresence, scale } from "framer-motion";
 import TopNav from "./Navigation";
 import Button from "./Button";
 import Img from "./Img";
@@ -7,6 +8,10 @@ import {texts} from "./Texts"
 
 export default function Header()
 {
+    const headerButtonVariant = {
+        hoverState: { backgroundColor: 'rgb(223, 152, 0)', color: 'black' , scale:1.1 }
+    } 
+
     return(
         <div className="header">
             <div className="topHeader">
@@ -19,7 +24,7 @@ export default function Header()
                     <TopNav value={'Galeria'} dir={' '}></TopNav>
                     <TopNav value={'Kontakt'} dir={' '}></TopNav>
                 </div>
-                <Button className={'headerButton'} value={'Zamów online'}/>
+                <Button className={'headerButton'} value={'Zamów online'} variant={headerButtonVariant}/>
             </div>
 
             <div className="bottomHeader">
