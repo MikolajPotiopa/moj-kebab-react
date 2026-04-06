@@ -1,18 +1,18 @@
 export const Week = [{
     id: 1,
-    day:'Poniedziałek',
+    day:'poniedziałek',
     hours:'12:00-20:00'
 },{
     id: 2,
-    day:'Wtorek',
+    day:'wtorek',
     hours:'12:00-20:00'
 },{
     id: 3,
-    day:'Środa',
+    day:'środa',
     hours:'12:00-20:00'
 },{
     id: 4,
-    day:'Czwartek',
+    day:'czwartek',
     hours:'12:00-20:00'
 },{ 
     id: 5,

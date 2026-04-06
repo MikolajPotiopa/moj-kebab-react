@@ -1,48 +1,42 @@
 import { Week } from "./Days";
 import { useState } from "react";
-import { MdArrowDropUp } from "react-icons/md";
-import { MdOutlineArrowDropDown } from "react-icons/md";
+import { MdArrowDropUp ,MdOutlineArrowDropDown } from "react-icons/md";
+
 
 
 const today = new Date();
 
-
-
-export default function Today()
-{
-    const [showMore, setShowMore] = useState(false);
-    
-    function handleShowMore()
-    {
-        setShowMore(!showMore);
-    }
-
-    function formatDate(date) 
+const formatDate = (date) =>
     {
         return new Intl.DateTimeFormat(
             'pl-PL',
             { weekday: 'long' }
           ).format(date);
     }
-
-   
-
-    const days = Week.map(day =>
-            <li key={day.id}><div className="secondBoxDays">{day.day}</div> <div className="secondBoxHours">{day.hours}</div></li>
-        );
-    const todayHours = Week.filter((day)=>{
-        return day.day==formatDate(today)
-    });
     
-    console.log(todayHours);
-    console.log(formatDate(today));
+
+
+export default function Today()
+{
+    const [showMore, setShowMore] = useState(false);
+    const currentDayName = formatDate(today);
+    const todayDate = Week.find(d => d.day.toLowerCase() === currentDayName.toLowerCase());
+    function handleShowMore()
+    {
+        setShowMore(!showMore)
+    }
+
+
+    const days = Week.map((day,index) =>
+            <li key={day.id} className="slideList" style={{animationDelay: `${index * 0.1}s`}} ><div className="secondBoxDays">{day.day}</div> <div className="secondBoxHours">{day.hours}</div></li>
+        );
     return(
         <div className="secondBoxText">
             <div className="secondBoxButton">
                 
-                {!showMore ? <div className="secondBoxDni"><div>Dzisiaj: </div> {todayHours[0]?.hours}</div>:<br/>}
+                {!showMore ? <div className="secondBoxDni"><div>Dzisiaj: </div> {todayDate?.hours}</div>:<br/>}
                 
-                {showMore && <ul>{days}</ul>}
+                {showMore && <ul className="daysList">{days}</ul>}
                 
             </div>
             <div>
@@ -51,3 +45,5 @@ export default function Today()
         </div>
     );
 }
+
+
