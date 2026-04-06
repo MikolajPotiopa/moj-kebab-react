@@ -216,5 +216,8 @@ export const divVariant=
     },
     exit:{
         opacity:0,
+    },
+    show:{
+        opacity:1
     }
 }

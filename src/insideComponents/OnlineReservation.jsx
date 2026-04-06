@@ -10,7 +10,7 @@ export default function OnlineReservation({variant})
             <Icon variant={iconVariant}></Icon>
             <Text className={'thirdBoxTitle'} text={'Zamów online'}  variant={titleBoxTextVariant}></Text>
             <Button className={'thirdBoxButton'} value={'zobacz menu'} variant={variant}></Button>
-            
+            {/*Błąd animacja pojawia się ciągle */}
         </div>
     );
 }

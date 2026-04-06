@@ -2,7 +2,7 @@
 import TimeOpen from "../insideComponents/TimeOpen";
 import Localisation from "../insideComponents/Localisation";
 import OnlineReservation from "../insideComponents/OnlineReservation"
-import { onlineReservationVariant } from "../tablesOfData/variants";
+import { onlineReservationVariant,divVariant } from "../tablesOfData/variants";
 import { motion } from "framer-motion";
 
 export default function Inside()
@@ -10,7 +10,7 @@ export default function Inside()
     
     return(
         <div className="inside">
-            <motion.div className="boxes" viewport={{ once: true, amount: 0.3 }}>
+            <motion.div className="boxes" viewport={{ once: true, amount: 0.3 }} variants={divVariant} initial="initial" whileInView="show">
                 <Localisation></Localisation>
                 <TimeOpen></TimeOpen>
                 <OnlineReservation variant={onlineReservationVariant}></OnlineReservation>
