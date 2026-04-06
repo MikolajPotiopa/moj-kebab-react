@@ -1,13 +1,13 @@
+import { motion } from "framer-motion";
 
-
-export default function Link({className,href,value})
+export default function Link({className,href,value,variant})
 {
     return(
-        <a href={href} className={className}>
-            <div>
+        <motion.a href={href} className={className} whileHover="hoverState" initial="initial">
+            <motion.div variants={variant} >
                 {value}
-            </div>
-        </a>
+            </motion.div>
+        </motion.a>
         
     );
 }
