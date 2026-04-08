@@ -4,7 +4,7 @@ export default function Button({className,value,variant})
 {
     return(
         <div className={className}>
-            <motion.button variants={variant} whileHover="hoverState" initial="initial" whileTap="tapState" animate="animate" whileInView="show">
+            <motion.button variants={variant} whileHover="hoverState" initial="initial" whileTap="tapState" animate="animate" whileInView="show" viewport={{ once: true }}>
             {value}
             </motion.button>
         </div>

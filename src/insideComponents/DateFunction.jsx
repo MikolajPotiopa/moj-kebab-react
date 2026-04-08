@@ -32,13 +32,14 @@ export default function Today()
 
 
     return(
-        <motion.div className="secondBoxText" variants={boxTextVariant} initial="initial" whileInView="show" >
+        <motion.div className="secondBoxText" variants={boxTextVariant} initial="initial" whileInView="show" viewport={{ once: true }} >
             <AnimatePresence mode="wait">
                     {!showMore?(
                         <motion.div key="short"
                         variants={divVariant}
                         initial="initial" animate="animate" exit="exit"
                         className="secondBoxDni"
+                        
                         >
                             <div>Dzisiaj: </div> {todayDate?.hours}
                         </motion.div>
@@ -47,9 +48,10 @@ export default function Today()
                         key="long"
                         variants={unOrderListVariant}
                         initial="initial" whileInView="show" exit="exit"
+                        viewport={{ once: true }}
                     >
                         {Week.map((day) => (
-                            <motion.li key={day.id} variants={elementListVariant} className="slideList">
+                            <motion.li key={day.id} variants={elementListVariant} className="slideList" >
                                 <div className="secondBoxDays">{day.day}</div> 
                                 <div className="secondBoxHours">{day.hours}</div>
                             </motion.li>

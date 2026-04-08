@@ -13,7 +13,7 @@ export default function Localisation()
             <Icon variant={iconVariant}></Icon>
             <div className="firstBoxTexts">
                 <Text className={'firstBoxTitle'} text={'Gdzie jesteśmy?'} variant={titleBoxTextVariant} ></Text>
-                <motion.div className="firstBoxText" variants={boxTextVariant} initial="initial" whileInView="show">Habibi Kebab Wawer <br /> Michała Kajki 67a <br /> o4-634 Warszawa</motion.div>
+                <motion.div className="firstBoxText" variants={boxTextVariant} initial="initial" whileInView="show" viewport={{ once: true }}>Habibi Kebab Wawer <br /> Michała Kajki 67a <br /> o4-634 Warszawa</motion.div>
             </div>
             
         </div>
