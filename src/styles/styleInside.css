@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+
 :root
 {
     --font-size-casual:15px;
@@ -136,6 +139,63 @@
 {
     
     width: 100px;
+}
+/* PostInfoBox*/
+
+
+.postInfo{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.postInfoBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+
+    padding: 30px 30px 30px 30px;
+
+    border: 3px solid white;
+}
+.postInfoBoxTitle, .postInfoBoxText, .postInfoBoxDescription
+{
+    color: var(--color-casual);
+}
+
+.postInfoBoxIntro{
+    font-size: 30px;
+    color: var(--color-orange);
+    font-family: 'Great Vibes',cursive;
+    line-height: 0.9;
+}
+.postInfoBoxTitle{
+    font-size: 40px;
+    font-weight: 600;
+    padding-bottom: 50px;
+}
+.postInfoBoxText{
+
+}
+.postInfoBoxDescription{
+
+}
+.postInfoBoxButton button{
+    width: 200px;
+    height: 60px;
+
+    font-weight: 500;
+    font-size: var(--font-size-casual);
+    
+    border: 4px rgba(0, 0,0,0);
+    outline: none;
+    cursor: pointer;
+    background-color: var(--color-orange);
+
+    
 }
 
 

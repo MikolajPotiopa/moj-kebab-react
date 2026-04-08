@@ -32,6 +32,34 @@
     padding-bottom: 50px;
     
 }
+.sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.95);
+    height: 100px;
+    padding: 0;
+
+}
+.sticky .headerImg
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 100px;
+    
+}
+.sticky .headerImg img
+{
+    height: auto; 
+    max-height: 60px;      
+    max-width: 60px;        
+    object-fit: contain;  
+    
+}
 .headerImg
 {
 
