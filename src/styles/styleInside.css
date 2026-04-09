@@ -144,7 +144,7 @@
 
 
 .postInfo{
-    width: 1200px;
+    width: 1300px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -178,10 +178,15 @@
     padding-bottom: 50px;
 }
 .postInfoBoxText{
-
+    padding-bottom:30px ;
+    text-align: center;
 }
 .postInfoBoxDescription{
-
+    padding-bottom:30px ;
+    text-align: center;
+}
+.postInfoBoxButton{
+    margin-bottom: -60px;
 }
 .postInfoBoxButton button{
     width: 200px;
@@ -193,9 +198,7 @@
     border: 4px rgba(0, 0,0,0);
     outline: none;
     cursor: pointer;
-    background-color: var(--color-orange);
-
-    
+    background-color: var(--color-orange);    
 }
 
 
