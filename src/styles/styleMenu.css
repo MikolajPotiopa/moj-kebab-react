@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.menuDiv{
+    height: 2000px;
+    background-color: black;
+}
+
+.menuTitle{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.menuTitleOne{
+    text-align: center;
+    font-size: 30px;
+    color: var(--color-orange);
+    font-family: 'Great Vibes',cursive;
+}
+.menuTitleTwo
+{
+    font-size: 50px;
+    font-weight: 600;
+    color: white;
+}

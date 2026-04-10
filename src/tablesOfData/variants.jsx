@@ -221,3 +221,49 @@ export const divVariant=
         opacity:1
     }
 }
+export const postInfoVariant=
+{
+    initial:{
+        opacity:0,
+        x:-300
+    },
+    show:{
+        x:0,
+        opacity:1,
+        transition:{duration:0.5,type:"easeIn"}
+    }
+}
+export const postImgsVariant=
+{
+    initial:{
+        opacity:0,
+        x:300
+    },
+    show:{
+        x:0,
+        opacity:1,
+        transition:{duration:0.5,type:"easeIn"}
+    }
+}
+export const postInfoButtonVariant=
+{
+    hoverState:
+    {
+        backgroundColor: 'black',
+        color: 'rgba(223, 152, 0,1)',
+        border: '4px solid rgba(223, 152, 0,0.2)',
+        scale: 1.05,
+        transition:{duration:0.1}
+    },
+    tapState:
+    {
+        scale:0.95
+    },
+    initial:
+    {
+        backgroundColor: 'rgba(223, 152, 0,1)',
+        color: 'rgba(0,0,0,1)',
+        border: '4px rgba(0, 0,0,0)',
+        scale: 1.00
+    }
+}
