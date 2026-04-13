@@ -17,9 +17,43 @@
     color: var(--color-orange);
     font-family: 'Great Vibes',cursive;
 }
-.menuTitleTwo
-{
+.menuTitleTwo{
     font-size: 50px;
     font-weight: 600;
     color: white;
+}
+
+.menu{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    flex-direction: row;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+
+
+    width: 1200px;
+}
+
+.menuSearchBar{
+    width: 20%;
+    color: white;
+}
+
+.menuPositions
+{
+    width: 80%;
+}
+
+.titleInMenu
+{
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+
+    padding: 10px 10px 30px 10px;
+
+    border-bottom: solid rgba(0, 255, 0, 0.05) 1px;
 }
