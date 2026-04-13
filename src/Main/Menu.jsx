@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import TitleInMenu from "../menuComponents/TitleInMenu";
+import DishInfo from "../menuComponents/DishInfo";
+import { dishes } from "../tablesOfData/Dishes";
 
 
 export default function Menu()
@@ -17,6 +19,11 @@ export default function Menu()
             </div>
             <div className="menuPositions">
                 <TitleInMenu text="Kebab w Rzemieślniczym Lawaszu"></TitleInMenu>
+                <div className="menuLawasz">
+                    <DishInfo dish={dishes[0]}></DishInfo>
+                    <DishInfo dish={dishes[1]}></DishInfo>
+                </div>
+                
             </div>
         </motion.div>
     </div>
