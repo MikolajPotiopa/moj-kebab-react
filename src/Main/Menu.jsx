@@ -3,6 +3,7 @@ import TitleInMenu from "../menuComponents/TitleInMenu";
 import DishInfo from "../menuComponents/DishInfo";
 import { menuData } from "../tablesOfData/Dishes";
 import { button } from "framer-motion/client";
+import { topNavVariant } from "../tablesOfData/variants";
 
 export function ShowMenuData({kategoria})
 {
@@ -12,7 +13,15 @@ export function ShowMenuData({kategoria})
 }
 export default function Menu()
 {
-    const kategorie = ["Lawasze","Bułki", "Burgery", "Sałatki", "Napoje", "Dodatki"]
+    const kategorie = ["Lawasze","Bułki", "Burgery", "Dodatki", "Napoje"];
+    const scrollToSection = (id) =>{
+        const element = document.getElementById(id);
+        if(element)
+        {
+            element.scrollIntoView({behavior:"smooth"});
+        }
+        
+    };
     return(
     <div className="menuDiv">
         <motion.div className="menuTitle">
@@ -23,16 +32,19 @@ export default function Menu()
             <div className="menuSearchBar">
                 {/* wyszukiwarka*/}
                 {kategorie.map(kat=>(
-                    <button key={kat} onClick={()=>scrollToSection(kat)}>
+                <>
+                    <motion.button key={kat} onClick={()=>scrollToSection(kat)} variants={topNavVariant} initial="initial" whileHover="hoverState">
                         {kat}
-                    </button>
+                    </motion.button>
+                </>
+                   
                 ))}
             </div>
 
             <div className="menuPositions">
                 {kategorie.map(kat=>(
                     <section id={kat} key={kat}>
-                         <TitleInMenu text={kat}></TitleInMenu>
+                            <TitleInMenu text={kat}></TitleInMenu>
                         <div className="menuKategory">
                             <ShowMenuData kategoria={kat}></ShowMenuData>
                         </div>

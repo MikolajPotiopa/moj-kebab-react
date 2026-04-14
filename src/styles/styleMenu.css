@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 .menuDiv{
-    height: 5000px;
+    height: 6000px;
     background-color: black;
 }
 
@@ -26,8 +26,10 @@
 .menu{
     display: flex;
     justify-content:center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
+
+    gap: 50px;
 
     margin-left: auto;
     margin-right: auto;
@@ -38,8 +40,27 @@
 }
 
 .menuSearchBar{
+    position: sticky;
+    top: 150px;
+
+    display: flex;
+    flex-direction: column;
     width: 20%;
+}
+.menuSearchBar button{
+    background-color: transparent;
     color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+
+    border-top:1px solid rgba(0,255,0,0.05) ;
+
+    font-size: 20px;
+
+    padding: 15px 10px 15px 10px;
 }
 
 .menuPositions
@@ -54,7 +75,7 @@
     font-size: 40px;
     font-weight: 600;
 
-    padding: 150px 10px 50px 10px;
+    padding: 0px 10px 50px 10px;
 
     border-bottom: solid rgba(0, 255, 0, 0.05) 1px;
 }
@@ -63,8 +84,7 @@
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
-
-
+    padding: 30px 0px 150px 0px;
 }
 
 

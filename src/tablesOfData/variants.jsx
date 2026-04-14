@@ -267,3 +267,4 @@ export const postInfoButtonVariant=
         scale: 1.00
     }
 }
+
