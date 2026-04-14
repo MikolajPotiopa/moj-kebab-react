@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 .menuDiv{
-    height: 2000px;
+    height: 5000px;
     background-color: black;
 }
 
@@ -25,7 +25,7 @@
 
 .menu{
     display: flex;
-    justify-content:center ;
+    justify-content:center;
     align-items: center;
     flex-direction: row;
 
@@ -34,7 +34,7 @@
     margin-top: 70px;
 
 
-    width: 1200px;
+    width: 1500px;
 }
 
 .menuSearchBar{
@@ -45,6 +45,7 @@
 .menuPositions
 {
     width: 80%;
+
 }
 
 .titleInMenu
@@ -53,27 +54,29 @@
     font-size: 40px;
     font-weight: 600;
 
-    padding: 10px 10px 30px 10px;
+    padding: 150px 10px 50px 10px;
 
     border-bottom: solid rgba(0, 255, 0, 0.05) 1px;
 }
 
-.menuLawasz{
+.menuKategory{
     display: flex;
     justify-content: left;
+    flex-wrap: wrap;
+
 
 }
 
 
 .dishBox{
-    width: 400px;
-    padding: 15px 15px 15px 15px;
+    width: 350px;
+    padding: 30px 15px 15px 15px;
 }
 
 .dishBoxImg{
     padding: 10px 10px 10px 0px;
 
-    height:250px ;
+    height:250px;
 }
 .dishBoxImg img{
     width: 100%;

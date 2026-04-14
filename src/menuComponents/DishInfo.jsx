@@ -11,9 +11,9 @@ export default function DishInfo({dish})
                 <div className="dishBoxTitle">
                     {dish.title}
                 </div>
-                <div className="dishBoxDescription">
+                { dish.description && (<div className="dishBoxDescription">
                     {dish.description}
-                </div>
+                </div>)}
             <motion.button className="dishBoxButton">od { dish.cost}zł</motion.button>
     </motion.div>
     );

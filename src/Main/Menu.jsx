@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
 import TitleInMenu from "../menuComponents/TitleInMenu";
 import DishInfo from "../menuComponents/DishInfo";
-import { dishes } from "../tablesOfData/Dishes";
+import { menuData } from "../tablesOfData/Dishes";
 
-
+export function ShowMenuData({kategoria})
+{
+    return(
+        menuData.map(item => item.kategoria === kategoria && <DishInfo key={item.id} dish={item}></DishInfo>)
+    );
+}
 export default function Menu()
 {
     return(
@@ -19,9 +24,24 @@ export default function Menu()
             </div>
             <div className="menuPositions">
                 <TitleInMenu text="Kebab w Rzemieślniczym Lawaszu"></TitleInMenu>
-                <div className="menuLawasz">
-                    <DishInfo dish={dishes[0]}></DishInfo>
-                    <DishInfo dish={dishes[1]}></DishInfo>
+                <div className="menuKategory">
+                    <ShowMenuData kategoria={"Lawasz"}></ShowMenuData>
+                </div>
+                <TitleInMenu text="Kebab w Chrupiącej Bułce"></TitleInMenu>
+                <div className="menuKategory">
+                    <ShowMenuData kategoria={"Bułka"}></ShowMenuData>
+                </div>
+                <TitleInMenu text="Burgery z Świerzą Wołowiną"></TitleInMenu>
+                <div className="menuKategory">
+                    <ShowMenuData kategoria={"Burger"}></ShowMenuData>
+                </div>
+                <TitleInMenu text="Dodatki"></TitleInMenu>
+                <div className="menuKategory">
+                    <ShowMenuData kategoria={"Dodatki"}></ShowMenuData>
+                </div>
+                <TitleInMenu text="Napoje"></TitleInMenu>
+                 <div className="menuKategory">
+                    <ShowMenuData kategoria={"Napoje"}></ShowMenuData>
                 </div>
                 
             </div>
@@ -31,3 +51,4 @@ export default function Menu()
     );
     
 }
+
