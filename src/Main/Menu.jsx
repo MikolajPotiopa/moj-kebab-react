@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import TitleInMenu from "../menuComponents/TitleInMenu";
 import DishInfo from "../menuComponents/DishInfo";
 import { menuData } from "../tablesOfData/Dishes";
+import { button } from "framer-motion/client";
 
 export function ShowMenuData({kategoria})
 {
@@ -11,6 +12,7 @@ export function ShowMenuData({kategoria})
 }
 export default function Menu()
 {
+    const kategorie = ["Lawasze","Bułki", "Burgery", "Sałatki", "Napoje", "Dodatki"]
     return(
     <div className="menuDiv">
         <motion.div className="menuTitle">
@@ -20,30 +22,22 @@ export default function Menu()
         <motion.div className="menu">
             <div className="menuSearchBar">
                 {/* wyszukiwarka*/}
-                WYSZUKIWARKA
+                {kategorie.map(kat=>(
+                    <button key={kat} onClick={()=>scrollToSection(kat)}>
+                        {kat}
+                    </button>
+                ))}
             </div>
+
             <div className="menuPositions">
-                <TitleInMenu text="Kebab w Rzemieślniczym Lawaszu"></TitleInMenu>
-                <div className="menuKategory">
-                    <ShowMenuData kategoria={"Lawasz"}></ShowMenuData>
-                </div>
-                <TitleInMenu text="Kebab w Chrupiącej Bułce"></TitleInMenu>
-                <div className="menuKategory">
-                    <ShowMenuData kategoria={"Bułka"}></ShowMenuData>
-                </div>
-                <TitleInMenu text="Burgery z Świerzą Wołowiną"></TitleInMenu>
-                <div className="menuKategory">
-                    <ShowMenuData kategoria={"Burger"}></ShowMenuData>
-                </div>
-                <TitleInMenu text="Dodatki"></TitleInMenu>
-                <div className="menuKategory">
-                    <ShowMenuData kategoria={"Dodatki"}></ShowMenuData>
-                </div>
-                <TitleInMenu text="Napoje"></TitleInMenu>
-                 <div className="menuKategory">
-                    <ShowMenuData kategoria={"Napoje"}></ShowMenuData>
-                </div>
-                
+                {kategorie.map(kat=>(
+                    <section id={kat} key={kat}>
+                         <TitleInMenu text={kat}></TitleInMenu>
+                        <div className="menuKategory">
+                            <ShowMenuData kategoria={kat}></ShowMenuData>
+                        </div>
+                    </section>
+                ))}
             </div>
         </motion.div>
     </div>

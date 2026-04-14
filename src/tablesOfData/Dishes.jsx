@@ -1,7 +1,7 @@
 export const menuData = [
     {
         id: 0,
-        kategoria: "Lawasz",
+        kategoria: "Lawasze",
         src: "/Img/lawasz1.png",
         alt: "Lawasz kurczak",
         title: "Lawasz kurczak z ekologicznego drobiu",
@@ -10,7 +10,7 @@ export const menuData = [
     },
     {
         id: 1,
-        kategoria: "Lawasz",
+        kategoria: "Lawasze",
         src: "/Img/lawasz2.png",
         alt: "Lawasz wołowina",
         title: "Lawasz wołowina Premium",
@@ -19,7 +19,7 @@ export const menuData = [
     },
     {
         id: 2,
-        kategoria: "Lawasz",
+        kategoria: "Lawasze",
         src: "/Img/lawasz3.png",
         alt: "Lawasz Wege",
         title: "Lawasz Wege Falafel",
@@ -29,7 +29,7 @@ export const menuData = [
 
     {
         id: 3,
-        kategoria: "Bułka",
+        kategoria: "Bułki",
         src: "/Img/bulka1.png",
         alt: "Kebab bułka kurczak",
         title: "Kebab w chrupiącej bułce - Kurczak",
@@ -38,7 +38,7 @@ export const menuData = [
     },
     {
         id: 4,
-        kategoria: "Bułka",
+        kategoria: "Bułki",
         src: "/Img/bulka2.png",
         alt: "Kebab bułka wołowina",
         title: "Kebab w chrupiącej bułce - Wołowina",
@@ -47,7 +47,7 @@ export const menuData = [
     },
     {
         id: 5,
-        kategoria: "Bułka",
+        kategoria: "Bułki",
         src: "/Img/bulka3.png",
         alt: "Kebab bułka mix",
         title: "Kebab w bułce Mega Mix",
@@ -57,7 +57,7 @@ export const menuData = [
 
     {
         id: 6,
-        kategoria: "Burger",
+        kategoria: "Burgery",
         src: "/Img/burger1.png",
         alt: "Burger Klasyczny",
         title: "Burger Klasyk Wołowy",
@@ -66,7 +66,7 @@ export const menuData = [
     },
     {
         id: 7,
-        kategoria: "Burger",
+        kategoria: "Burgery",
         src: "/Img/burger2.png",
         alt: "Burger BBQ",
         title: "Burger BBQ Bacon",
@@ -75,7 +75,7 @@ export const menuData = [
     },
     {
         id: 8,
-        kategoria: "Burger",
+        kategoria: "Burgery",
         src: "/Img/burger3.png",
         alt: "Burger Ognisty",
         title: "Burger Ognisty Smok",
