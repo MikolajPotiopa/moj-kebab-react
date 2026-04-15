@@ -1,0 +1,12 @@
+.rest{
+    height: 1500px;
+    background-color: black;
+}
+
+.mapSectionTitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 30px 30px 30px;
+}

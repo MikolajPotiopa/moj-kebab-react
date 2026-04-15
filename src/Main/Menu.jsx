@@ -32,11 +32,9 @@ export default function Menu()
             <div className="menuSearchBar">
                 {/* wyszukiwarka*/}
                 {kategorie.map(kat=>(
-                <>
                     <motion.button key={kat} onClick={()=>scrollToSection(kat)} variants={topNavVariant} initial="initial" whileHover="hoverState">
                         {kat}
                     </motion.button>
-                </>
                    
                 ))}
             </div>

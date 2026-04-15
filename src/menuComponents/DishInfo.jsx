@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function DishInfo({dish})
 {
@@ -14,7 +14,7 @@ export default function DishInfo({dish})
                 { dish.description && (<div className="dishBoxDescription">
                     {dish.description}
                 </div>)}
-            <motion.button className="dishBoxButton">od { dish.cost}zł</motion.button>
+            <motion.button className="dishBoxButton"> <FaShoppingCart style={{marginRight:"6px", paddingTopTop:"2px"}}/> od { dish.cost}zł</motion.button>
     </motion.div>
     );
     

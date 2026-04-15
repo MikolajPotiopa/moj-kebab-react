@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 .menuDiv{
-    height: 6000px;
+    height: 5600px;
     background-color: black;
 }
 
@@ -123,6 +123,9 @@
     color: black;
     font-size: 15px;
     width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     border: none;
 
