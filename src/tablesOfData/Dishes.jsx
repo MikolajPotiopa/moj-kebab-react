@@ -6,7 +6,12 @@ export const menuData = [
         alt: "Lawasz kurczak",
         title: "Lawasz kurczak z ekologicznego drobiu",
         description: "Lawasz z kurczakiem w domowej tortilli z dodatkiem świeżej sałaty oraz chrupiących warzyw.",
-        cost: 35
+        subTitle: "Wybierz rozmiar",
+        info: [
+            { size: "Standard", cost: 38, weight: 180 },
+            { size: "Średni", cost: 42, weight: 240 },
+            { size: "Mega", cost: 46, weight: 360 }
+        ]
     },
     {
         id: 1,
@@ -15,7 +20,12 @@ export const menuData = [
         alt: "Lawasz wołowina",
         title: "Lawasz wołowina Premium",
         description: "Lawasz ze świeżą wołowiną w domowej tortilli z dodatkiem sałaty, czerwonej cebuli i ogórka.",
-        cost: 37
+        subTitle: "Ilość mięsa wołowego",
+        info: [
+            { size: "Standard", cost: 39, weight: 180 },
+            { size: "Średni", cost: 43, weight: 240 },
+            { size: "Mega", cost: 47, weight: 360 }
+        ]
     },
     {
         id: 2,
@@ -24,9 +34,13 @@ export const menuData = [
         alt: "Lawasz Wege",
         title: "Lawasz Wege Falafel",
         description: "Chrupiące kotleciki z ciecierzycy w tortilli z hummusem i zestawem świeżych surówek.",
-        cost: 32
+        subTitle: "Wybierz rozmiar",
+        info: [
+            { size: "Standard", cost: 36, weight: 180 },
+            { size: "Średni", cost: 39, weight: 240 },
+            { size: "Mega", cost: 43, weight: 360 }
+        ]
     },
-
     {
         id: 3,
         kategoria: "Bułki",
@@ -34,7 +48,10 @@ export const menuData = [
         alt: "Kebab bułka kurczak",
         title: "Kebab w chrupiącej bułce - Kurczak",
         description: "Wypiekana na miejscu bułka wypełniona soczystym kurczakiem i autorskim sosem czosnkowym.",
-        cost: 30
+        subTitle: "Wielkość porcji",
+        info: [
+            { size: "Standard", cost: 30, weight: 180 }
+        ]
     },
     {
         id: 4,
@@ -43,7 +60,10 @@ export const menuData = [
         alt: "Kebab bułka wołowina",
         title: "Kebab w chrupiącej bułce - Wołowina",
         description: "Tradycyjna bułka z dużą ilością opiekanej wołowiny, kapustą pekińską i pomidorem.",
-        cost: 33
+        subTitle: "Wielkość porcji",
+        info: [
+            { size: "Standard", cost: 33, weight: 180 }
+        ]
     },
     {
         id: 5,
@@ -52,9 +72,11 @@ export const menuData = [
         alt: "Kebab bułka mix",
         title: "Kebab w bułce Mega Mix",
         description: "Połączenie dwóch rodzajów mięs w jednej bułce z miksem wszystkich dostępnych sosów.",
-        cost: 35
+        subTitle: "Wielkość porcji",
+        info: [
+            { size: "Standard", cost: 35, weight: 200 }
+        ]
     },
-
     {
         id: 6,
         kategoria: "Burgery",
@@ -62,7 +84,10 @@ export const menuData = [
         alt: "Burger Klasyczny",
         title: "Burger Klasyk Wołowy",
         description: "100% wołowiny, ser cheddar, ogórek kiszony, cebula i klasyczny sos burgerowy w bułce maślanej.",
-        cost: 38
+        subTitle: "Wielkość porcji",
+        info: [
+            { size: "Standard", cost: 38, weight: 220 }
+        ]
     },
     {
         id: 7,
@@ -71,7 +96,10 @@ export const menuData = [
         alt: "Burger BBQ",
         title: "Burger BBQ Bacon",
         description: "Soczysta wołowina, chrupiący boczek, krążki cebulowe i dymny sos BBQ.",
-        cost: 42
+        subTitle: "Wielkość porcji",
+        info: [
+            { size: "Standard", cost: 42, weight: 250 }
+        ]
     },
     {
         id: 8,
@@ -80,9 +108,11 @@ export const menuData = [
         alt: "Burger Ognisty",
         title: "Burger Ognisty Smok",
         description: "Pikantny burger z papryczkami jalapeno, ostrym serem i sosem sriracha-mayo.",
-        cost: 40
+        subTitle: "Wielkość porcji",
+        info: [
+            { size: "Standard", cost: 40, weight: 230 }
+        ]
     },
-
     {
         id: 9,
         kategoria: "Dodatki",
@@ -90,7 +120,11 @@ export const menuData = [
         alt: "Frytki belgijskie",
         title: "Złociste Frytki Belgijskie",
         description: "Grubo cięte, dwukrotnie smażone frytki podawane z solą morską i wybranym sosem.",
-        cost: 15
+        subTitle: "Wybierz rozmiar",
+        info: [
+            { size: "Standard", cost: 15, weight: 150 },
+            { size: "Duże", cost: 22, weight: 250 }
+        ]
     },
     {
         id: 11,
@@ -99,7 +133,11 @@ export const menuData = [
         alt: "Frytki klasyczne",
         title: "Frytki Klasyczne",
         description: "Cienkie, chrupiące frytki, idealnie doprawione solą.",
-        cost: 12
+        subTitle: "Wybierz rozmiar",
+        info: [
+            { size: "Standard", cost: 12, weight: 120 },
+            { size: "Duże", cost: 18, weight: 200 }
+        ]
     },
     {
         id: 10,
@@ -108,7 +146,10 @@ export const menuData = [
         alt: "Surówka Coleslaw",
         title: "Domowa Surówka Coleslaw",
         description: "Klasyczna surówka z białej kapusty i marchewki w kremowym sosie majonezowym.",
-        cost: 10
+        subTitle: "Cena",
+        info: [
+            { cost: 10 }
+        ]
     },
     {
         id: 12,
@@ -117,10 +158,11 @@ export const menuData = [
         alt: "Sałatka Grecka",
         title: "Sałatka Grecka Mini",
         description: "Świeży ogórek, pomidor, oliwki i ser feta z sosem vinegret.",
-        cost: 14
+        subTitle: "Cena",
+        info: [
+            { cost: 14 }
+        ]
     },
-
-
     {
         id: 13,
         kategoria: "Napoje",
@@ -128,7 +170,10 @@ export const menuData = [
         alt: "Coca Cola",
         title: "Coca-Cola 0.33l",
         description: "",
-        cost: 8
+        subTitle: "Cena",
+        info: [
+            { cost: 8 }
+        ]
     },
     {
         id: 14,
@@ -137,7 +182,10 @@ export const menuData = [
         alt: "Fanta",
         title: "Fanta 0.33l",
         description: "",
-        cost: 8
+        subTitle: "Cena",
+        info: [
+            { cost: 8 }
+        ]
     },
     {
         id: 15,
@@ -146,7 +194,10 @@ export const menuData = [
         alt: "Sprite",
         title: "Sprite 0.33l",
         description: "",
-        cost: 8
+        subTitle: "Cena",
+        info: [
+            { cost: 8 }
+        ]
     },
     {
         id: 16,
@@ -155,7 +206,10 @@ export const menuData = [
         alt: "Woda gazowana",
         title: "Woda Gazowana 0.5l",
         description: "",
-        cost: 6
+        subTitle: "Cena",
+        info: [
+            { cost: 6 }
+        ]
     },
     {
         id: 17,
@@ -164,7 +218,10 @@ export const menuData = [
         alt: "Woda niegazowana",
         title: "Woda Niegazowana 0.5l",
         description: "",
-        cost: 6
+        subTitle: "Cena",
+        info: [
+            { cost: 6 }
+        ]
     },
     {
         id: 18,
@@ -173,7 +230,9 @@ export const menuData = [
         alt: "Sok wyciskany",
         title: "Świeżo wyciskany sok pomarańczowy",
         description: "",
-        cost: 18
+        subTitle: "Cena",
+        info: [
+            { cost: 18 }
+        ]
     }
-
 ];

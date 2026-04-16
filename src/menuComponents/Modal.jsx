@@ -2,9 +2,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import { divVariant } from "../tablesOfData/variants";
 import { MdClose } from "react-icons/md";
+import ModalBlock from "./ModalBlock";
 
-
-export default function Modal({isOpen, onClose}){
+export default function Modal({isOpen, onClose,children}){
     useEffect(()=>{
         if (isOpen) {
             document.body.style.overflow = "hidden";
@@ -33,9 +33,10 @@ export default function Modal({isOpen, onClose}){
                          exit={{ y: 50, opacity: 0, scale: 0.9 }}
                          onClick={(e) =>e.stopPropagation()}
                         >
-                            <button className="modalCloseButton">
+                            <button className="modalCloseButton" onClick={onClose}>
                                 <MdClose size={30}/>
                             </button>
+                            <ModalBlock dish={children}></ModalBlock>
                         </motion.div>
                     </motion.div>
                 )}
