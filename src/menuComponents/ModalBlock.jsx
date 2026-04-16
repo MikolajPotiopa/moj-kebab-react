@@ -1,26 +1,36 @@
-
-export default function ModalBlock({dish}){
+import { motion } from "framer-motion";
+import { MdClose } from "react-icons/md";
+export default function ModalBlock({onClose,dish}){
     
     return(
-        <div>
-            <img src={dish.src} alt={dish.alt} />
-            <div>{dish.title}</div>
-            <div>{dish.description}</div>
+        <motion.div
+            className="modalContent"
+            initial={{ y: 50, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 50, opacity: 0, scale: 0.9 }}
+            onClick={(e) =>e.stopPropagation()}
+        >
+            <button className="modalCloseButton" onClick={onClose}>
+                <MdClose size={30}/>
+            </button>
+            <img src={dish.src} alt={dish.alt} className="modalBlockImg" />
+            <div className="modalBlockTitle">{dish.title}</div>
+            <div className="modalBlockDescription">{dish.description}</div>
             <div>
-                <div>
-                    {dish.subTitle}
-                    <div>Wymagane</div>
-                    <div>Wybierz 1</div>
+                <div className="modalBlockInfo">
+                    <div className="modalBlockSubTitle">{dish.subTitle}</div>
+                    <div className="modalBlockNecessary">Wymagane</div>
+                    <div className="modalBlockUnderLineText">Wybierz 1</div>
                 </div>
-                <ol>
+                <ol className="modalBlockSize-ol">
                     {dish.info.map((item,index)=>(
-                    <li key={index}>
+                    <li key={index} className="modalBlockSize-li">
                         <input type="radio" name="sizeRadio"/><label htmlFor="sizeRadio">{`${item.size} - ${item.cost} (${item.weight}g)`}</label> 
                     </li>
                     ))}
                 </ol>
                 
             </div>
-        </div>
+        </motion.div>
     );
 }

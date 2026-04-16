@@ -174,3 +174,8 @@
     cursor: pointer;
     z-index: 10;
 }
+.modalBLockImg
+{
+    width: 100%;
+    max-width: 30%;
+}
