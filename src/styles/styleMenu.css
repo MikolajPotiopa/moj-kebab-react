@@ -156,6 +156,7 @@
     width: 100%;
     max-width: 30%;
 
+    color: white;
     background-color: black;
     border-radius: 20px;
     position: relative;
@@ -178,4 +179,49 @@
 {
     width: 100%;
     max-width: 30%;
+}
+.modalBlockContent{
+    padding: 20px;
+    height: 4500px;
+}
+.modalBlockTitle{
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.modalBlockDescription{
+    font-size: 15px;
+    line-height: 1.3;
+    padding-bottom: 20px;
+}
+.modalBlockInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+.modalBlockSubTitle{
+    font-size: 26px;
+    width: 80%;
+}
+.modalBlockNecessary{
+    width:  20%;
+    background-color: rgb(78, 78, 78);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+}
+.modalBlockUnderLineText{
+    color: gray;
+    font-size: 17px;
+    line-height: 0.9;
+}
+.modalBlockSize-ul{
+    padding: 15px 0px 15px 0px;
+    list-style: none;
+}
+.modalBlockSize-li{
+    padding: 10px 0px 10px 0px;
+    font-size: 17px;
 }

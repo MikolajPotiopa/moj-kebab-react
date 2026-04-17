@@ -14,21 +14,27 @@ export default function ModalBlock({onClose,dish}){
                 <MdClose size={30}/>
             </button>
             <img src={dish.src} alt={dish.alt} className="modalBlockImg" />
-            <div className="modalBlockTitle">{dish.title}</div>
-            <div className="modalBlockDescription">{dish.description}</div>
-            <div>
+            <div className="modalBlockContent">
+                <div className="modalBlockTitle">{dish.title}</div>
+                <div className="modalBlockDescription">{dish.description}</div>
+            
                 <div className="modalBlockInfo">
                     <div className="modalBlockSubTitle">{dish.subTitle}</div>
                     <div className="modalBlockNecessary">Wymagane</div>
                     <div className="modalBlockUnderLineText">Wybierz 1</div>
                 </div>
-                <ol className="modalBlockSize-ol">
+                <ul className="modalBlockSize-ul">
                     {dish.info.map((item,index)=>(
                     <li key={index} className="modalBlockSize-li">
-                        <input type="radio" name="sizeRadio"/><label htmlFor="sizeRadio">{`${item.size} - ${item.cost} (${item.weight}g)`}</label> 
+                        <input type="radio" name="sizeRadio"/>
+                        <label htmlFor="sizeRadio"
+                        >
+                            {`${item.size ? item.size:""} - ${item.cost ? `${item.cost}zł`:""} 
+                            ${ item.weight ? (`(${item.weight}g)`):""}`}
+                        </label> 
                     </li>
                     ))}
-                </ol>
+                </ul>
                 
             </div>
         </motion.div>

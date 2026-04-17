@@ -20,7 +20,7 @@ export const menuData = [
         alt: "Lawasz wołowina",
         title: "Lawasz wołowina Premium",
         description: "Lawasz ze świeżą wołowiną w domowej tortilli z dodatkiem sałaty, czerwonej cebuli i ogórka.",
-        subTitle: "Ilość mięsa wołowego",
+        subTitle: "Wybierz rozmiar",
         info: [
             { size: "Standard", cost: 39, weight: 180 },
             { size: "Średni", cost: 43, weight: 240 },
