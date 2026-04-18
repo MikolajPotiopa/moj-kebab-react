@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { div } from "framer-motion/client";
 import { MdClose } from "react-icons/md";
 export default function ModalBlock({onClose,dish}){
     
@@ -35,7 +36,30 @@ export default function ModalBlock({onClose,dish}){
                     </li>
                     ))}
                 </ul>
-                
+                {dish.sauce?
+                (
+                    <div>
+                        <div className="modalBlockInfo">
+                            <div className="modalBlockSubTitle">{dish.subTitle}</div>
+                            <div className="modalBlockNecessary">Wymagane</div>
+                            <div className="modalBlockUnderLineText">Wybierz 1</div>
+                        </div>
+                        <ul className="modalBlockSize-ul">
+                            {dish.info.map((item,index)=>(
+                            <li key={index} className="modalBlockSize-li">
+                                <input type="radio" name="sizeRadio"/>
+                                <label htmlFor="sizeRadio"
+                                >
+                                    {`${item.size ? item.size:""} - ${item.cost ? `${item.cost}zł`:""} 
+                                    ${ item.weight ? (`(${item.weight}g)`):""}`}
+                                </label> 
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+                :""
+                }
             </div>
         </motion.div>
     );

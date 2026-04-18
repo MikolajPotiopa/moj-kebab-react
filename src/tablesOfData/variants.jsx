@@ -267,4 +267,19 @@ export const postInfoButtonVariant=
         scale: 1.00
     }
 }
+export const dishBoxButtonVariant={
+    initial:{
+        backgroundColor: 'rgba(223, 152, 0,1)',
+        color: 'rgba(0,0,0,1)',
+       
+        scale: 1.00
+    },
+    hoverState:
+    {
+        backgroundColor: 'black',
+        color: 'rgba(223, 152, 0,1)',
+        scale: 1.05,
+        transition:{duration:0.1}
+    }
+}
 

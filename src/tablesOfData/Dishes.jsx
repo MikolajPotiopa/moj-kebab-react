@@ -7,6 +7,7 @@ export const menuData = [
         title: "Lawasz kurczak z ekologicznego drobiu",
         description: "Lawasz z kurczakiem w domowej tortilli z dodatkiem świeżej sałaty oraz chrupiących warzyw.",
         subTitle: "Wybierz rozmiar",
+        sauce:true,
         info: [
             { size: "Standard", cost: 38, weight: 180 },
             { size: "Średni", cost: 42, weight: 240 },
@@ -21,6 +22,7 @@ export const menuData = [
         title: "Lawasz wołowina Premium",
         description: "Lawasz ze świeżą wołowiną w domowej tortilli z dodatkiem sałaty, czerwonej cebuli i ogórka.",
         subTitle: "Wybierz rozmiar",
+        sauce:true,
         info: [
             { size: "Standard", cost: 39, weight: 180 },
             { size: "Średni", cost: 43, weight: 240 },
@@ -35,6 +37,7 @@ export const menuData = [
         title: "Lawasz Wege Falafel",
         description: "Chrupiące kotleciki z ciecierzycy w tortilli z hummusem i zestawem świeżych surówek.",
         subTitle: "Wybierz rozmiar",
+        sauce:true,
         info: [
             { size: "Standard", cost: 36, weight: 180 },
             { size: "Średni", cost: 39, weight: 240 },
@@ -49,6 +52,7 @@ export const menuData = [
         title: "Kebab w chrupiącej bułce - Kurczak",
         description: "Wypiekana na miejscu bułka wypełniona soczystym kurczakiem i autorskim sosem czosnkowym.",
         subTitle: "Wielkość porcji",
+        sauce:true,
         info: [
             { size: "Standard", cost: 30, weight: 180 }
         ]
@@ -61,6 +65,7 @@ export const menuData = [
         title: "Kebab w chrupiącej bułce - Wołowina",
         description: "Tradycyjna bułka z dużą ilością opiekanej wołowiny, kapustą pekińską i pomidorem.",
         subTitle: "Wielkość porcji",
+        sauce:true,
         info: [
             { size: "Standard", cost: 33, weight: 180 }
         ]
@@ -73,6 +78,7 @@ export const menuData = [
         title: "Kebab w bułce Mega Mix",
         description: "Połączenie dwóch rodzajów mięs w jednej bułce z miksem wszystkich dostępnych sosów.",
         subTitle: "Wielkość porcji",
+        sauce:true,
         info: [
             { size: "Standard", cost: 35, weight: 200 }
         ]

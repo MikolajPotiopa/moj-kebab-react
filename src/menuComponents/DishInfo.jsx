@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaShoppingCart } from "react-icons/fa";
 import Modal from "./Modal";
+import { dishBoxButtonVariant } from "../tablesOfData/variants";
 
 import { useState } from "react";
 export default function DishInfo({dish})
@@ -17,7 +18,13 @@ export default function DishInfo({dish})
                 { dish.description && (<div className="dishBoxDescription">
                     {dish.description}
                 </div>)}
-            <motion.button className="dishBoxButton" onClick={()=>setModalOpen(true)}> 
+            <motion.button
+             className="dishBoxButton"
+             onClick={()=>setModalOpen(true)}
+             variants={dishBoxButtonVariant}
+             initial="initial"
+             whileHover="hoverState"
+            > 
                 <FaShoppingCart 
                 style={{marginRight:"6px", paddingTopTop:"2px"}}/>
                 {`od ${dish.info[0].cost}zł`}
