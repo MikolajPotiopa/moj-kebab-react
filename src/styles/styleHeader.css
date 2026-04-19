@@ -60,6 +60,21 @@
     object-fit: contain;  
     
 }
+.stickyCart{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 70px;
+    margin-bottom: 30px;
+    border-radius: 50px;
+    background-color:rgb(223, 152, 0);
+    max-width: 100;
+    max-height: 120;
+}
+.cartIcon{
+    
+}
+
 .headerImg
 {
 
