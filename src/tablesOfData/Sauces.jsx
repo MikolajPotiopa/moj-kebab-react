@@ -1,6 +1,6 @@
 export const textForSauces ={
-    Title:"Wybierz sosy",
-    SubTitle:"Wybierz max 2"
+    subTitle:"Wybierz sosy",
+    description:"Wybierz max 2"
 }
 
 export const sauces=[
