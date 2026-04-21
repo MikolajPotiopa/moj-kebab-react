@@ -79,7 +79,7 @@ export default function ModalBlock({onClose,dish}){
             exit={{ y: 50, opacity: 0, scale: 0.9 }}
             onClick={(e) =>e.stopPropagation()}
         >
-            <button className="modalCloseButton" onClick={onClose}>
+            <button className="modalCloseButton" onClick={()=>onClose()}>
                 <MdClose size={30}/>
             </button>
             <img src={dish.src} alt={dish.alt} className="modalBlockImg" />
@@ -135,7 +135,7 @@ export default function ModalBlock({onClose,dish}){
                 )
                 :""
                 }
-                <button onClick={handleConfirm}>DODAJ DO KOSZYKA</button>
+                <button onClick={handleConfirm} className="modalBlockBtnAdd">DODAJ DO KOSZYKA</button>
             </div>
         </motion.div>
     );

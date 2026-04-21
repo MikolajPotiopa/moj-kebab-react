@@ -1,10 +1,13 @@
 import { motion, AnimatePresence, scale, color, transform, easeIn } from "framer-motion";
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { CartContext } from "./CartContext.jsx";
 import TopNav from "../headerComponents/Navigation.jsx";
 import Button from "../basicComponents/Button.jsx";
 import Img from "../basicComponents/Img.jsx";
 import Text from "../basicComponents/Text.jsx";
 import Link from "../basicComponents/Link.jsx";
+import Cart from "./Cart.jsx";
 import {texts} from "../tablesOfData/Texts.jsx"
 import { 
     headerButtonVariant, 
@@ -17,8 +20,10 @@ import {
 
 export default function Header()
 {
+    const { cart } = useContext(CartContext);
     const [isSticky, setIsSticky] = useState(false);
 
+    
     useEffect(() =>{
         const handleScroll = () =>{
             window.scrollY > 200 ? setIsSticky(true) : setIsSticky(false)
@@ -26,6 +31,9 @@ export default function Header()
         window.addEventListener("scroll",handleScroll);
         return () => window.removeEventListener("scroll",handleScroll);
     },[]);
+    //guzik do menu
+    const [isOpen,setOpen] = useState(false);
+    
 
     return(
         <div className="header">
@@ -77,6 +85,13 @@ export default function Header()
                     <Link className={'facebook'} href={' '} value={'f'} variant={facebookVariant}></Link>
                 </div>
             </div>
+            <div className="stickyCart">   
+                <button className="cartButton" onClick={()=>setOpen(true)} >
+                    <FaShoppingCart className="cartIcon"/>
+                    <span className="cartBadge">{cart.length}</span>
+                </button>
+            </div>
+            <Cart onClose={()=>setOpen(false)} isOpen={isOpen}></Cart>
         </div>
     );
 }
