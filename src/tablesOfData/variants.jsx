@@ -1,4 +1,5 @@
-import { animate, delay, easeIn } from "framer-motion"
+import { animate, delay, easeIn, scale, transform } from "framer-motion"
+import { RxShadow } from "react-icons/rx"
 
 export const headerButtonVariant = 
 {
@@ -194,15 +195,18 @@ export const elementListVariant=
 {
     initial:{
         opacity:0,
-        y:-50
+        y:-50,
+        rotate:-45
     },
     show:{
         opacity:1,
-        y:0
+        y:0,
+        rotate:0
     },
     exit:{
         opacity:0,
-        y:-50
+        y:-50,
+        rotate:-45
     }
 }
 export const divVariant=
@@ -280,6 +284,44 @@ export const dishBoxButtonVariant={
         color: 'rgba(223, 152, 0,1)',
         scale: 1.05,
         transition:{duration:0.1}
+    }
+}
+export const dishInfoVariant={
+    initial:{
+        opacity:0
+    },
+    show:{
+        transition:({duration:0.3,ease:easeIn}),
+        opacity:1
+    }
+}
+export const cartButtonVariant={
+    initial:{
+        scale:1.00,
+        boxShadow: "0px 0px 0px rgba(223, 152, 0,1)"
+    },
+    hoverState:{
+        scale:1.03,
+        y:2,
+        boxShadow:"0px 1px 15px rgba(223, 152, 0,1)",
+        transition:{duration:0.2,ease:easeIn}
+    },
+    tapState:{
+        scale:1.0,
+        y:2,
+        boxShadow:"0px 1px 15px rgba(223, 152, 0,1)",
+        transition:{duration:0.2,ease:easeIn}
+    }
+}
+export const cartBlockCloseBtnVariant={
+    initial:{
+        backgroundColor:'rgba(0,0,0,1)',
+        ratate:0
+    },
+    hoverState:{
+        backgroundColor:'rgba(223, 152, 0,1)',
+        rotate:90,
+        transition:{type: "spring", stiffness: 100,power:10}
     }
 }
 

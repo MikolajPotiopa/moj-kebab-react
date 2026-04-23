@@ -15,7 +15,8 @@ import {
     topNavVariant, 
     facebookVariant,
     titleVariant,
-    titleTextVariant
+    titleTextVariant,
+    cartButtonVariant
 } from "../tablesOfData/variants.jsx";
 
 export default function Header()
@@ -85,12 +86,12 @@ export default function Header()
                     <Link className={'facebook'} href={' '} value={'f'} variant={facebookVariant}></Link>
                 </div>
             </div>
-            <div className="stickyCart">   
-                <button className="cartButton" onClick={()=>setOpen(true)} >
+            <motion.div className="stickyCart" >
+                <motion.button className="cartButton" onClick={()=>setOpen(true)} variants={cartButtonVariant} initial="initial" whileHover="hoverState" whileTap="tapState" >
                     <FaShoppingCart className="cartIcon"/>
                     <span className="cartBadge">{cart.length}</span>
-                </button>
-            </div>
+                </motion.button>
+            </motion.div>
             <Cart onClose={()=>setOpen(false)} isOpen={isOpen}></Cart>
         </div>
     );

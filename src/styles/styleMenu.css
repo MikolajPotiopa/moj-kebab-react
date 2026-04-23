@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 .menuDiv{
-    height: 5600px;
+    padding-top: 300px;
     background-color: black;
 }
 
@@ -129,6 +129,7 @@
     
     border: 2px solid rgba(223, 152, 0,0.2);
 
+    border-radius: 10px;
     background-color: var(--color-orange);
     padding-top: 9px;
     padding-bottom: 9px;
@@ -300,4 +301,13 @@
 .modalBlockContent::-webkit-scrollbar-thumb {
     background: #333;
     border-radius: 10px;
+}
+
+
+
+@media(max-width: 1500px){
+    .menu{
+        width: 1000px;
+    }
+
 }

@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { FaShoppingCart } from "react-icons/fa";
 import Modal from "./Modal";
-import { dishBoxButtonVariant } from "../tablesOfData/variants";
+import { dishBoxButtonVariant,dishInfoVariant } from "../tablesOfData/variants";
 
 import { useState } from "react";
 export default function DishInfo({dish})
 {
     const[isModalOpen, setModalOpen] = useState(false);
     return(
-        <motion.div className="dishBox">
+        <motion.div className="dishBox" variants={dishInfoVariant} initial="initial" whileInView="show">
             <div className="dishBoxImg">
                 <img src={dish.src} alt={dish.alt} />
             </div>

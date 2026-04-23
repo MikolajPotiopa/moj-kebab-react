@@ -1,11 +1,17 @@
 import { menuData } from "../tablesOfData/Dishes";
 import { CartContext } from "../Main/CartContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function CartLine({dish}){
     const {cart,addToCart,subtractFromCart} = useContext(CartContext);
+    const [change,setChange] =useState(0);
     const dishInfoTable = menuData.filter(item=>item.id===dish.id);
     const dishInfo = dishInfoTable[0];
+    const handleButtonClick =()=>{
+        addToCart(dish);
+        setChange(change+1);
+    }
     console.log(dish);
     return(
         
@@ -17,10 +23,10 @@ export default function CartLine({dish}){
                 <div className="cartSize">{dish.size}</div>
                 <div className="cartSauces">{dish.sauces[0]}</div>
                 <div className="cartSauces">{dish.sauces[1]}</div>
-                <button onClick={()=>addToCart(dish)}>+</button>
-                <div className="cartQty">{dish.qty}</div>
+                <button onClick={()=>handleButtonClick()}>+</button>
+                <motion.div className="cartQty" key={change}initial={{opacity:0,y:-10}} animate={{opacity:1,y:0,transition:{duration:0.5,type:"spring",stiffness:100}}} exit={{}}>{dish.qty}</motion.div>
                 <button onClick={()=>subtractFromCart(dish)} >-</button>
-                <div className="cartCost">{dish.cost * dish.qty}</div>
+                <div className="cartCost">{`${dish.cost * dish.qty} zł`}</div>
                 
             </div>
         </li>
