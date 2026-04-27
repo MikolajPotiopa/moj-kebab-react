@@ -4,8 +4,46 @@ import { CartContext } from "../Main/CartContext";
 import CartLine from "./CartLine";
 import { cartBlockCloseBtnVariant } from "../tablesOfData/variants";
 import { useContext, useEffect, useState } from "react";
+
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+
 export default function CartBlock({onClose}){
     const {cart,addToCart} = useContext(CartContext);
+
+
+    const handlePayment = async () => {
+        const stripe = await stripePromise;
+
+        // 1. Wysyłamy koszyk do funkcji Netlify
+        const response = await fetch('/.netlify/functions/create-checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cart: cart }), // Twoja tablica cart z Contextu
+        });
+
+        const session = await response.json();
+
+        if (session.error) {
+            alert("Błąd płatności: " + session.error);
+            return;
+        }
+
+        // 2. Przekierowanie klienta do Stripe Checkout
+        const result = await stripe.redirectToCheckout({
+            sessionId: session.id,
+        });
+
+        if (result.error) {
+            alert(result.error.message);
+        }
+    };
+
+
+
+
+    
     const [sum,setSum] = useState(0);
     useEffect(()=>{
         const totalSum = cart.reduce((total,item)=> total + (item.qty*item.cost),0);
@@ -38,7 +76,7 @@ export default function CartBlock({onClose}){
                     <div className="cartFullCost">
                         {`Koszt: ${sum} zł`}
                     </div>
-                    <button className="cartBuyBtn">Zamów Online</button> 
+                    <button onClick={handlePayment} className="cartBuyBtn">Zamów Online</button> 
                 </div>
             )
             }
