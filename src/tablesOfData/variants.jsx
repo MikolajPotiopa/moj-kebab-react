@@ -325,3 +325,18 @@ export const cartBlockCloseBtnVariant={
     }
 }
 
+export const cartBuyBtnVariant = {
+    initial:{
+        boxShadow: "10px 10px 20px rgba(223, 152, 0, 0.2)",
+        scale:1.00,
+    },
+    hoverState:{
+        boxShadow: "10px 20px 30px rgba(223, 152, 0, 0.2)",
+        scale:1.10,
+    },
+    tapState:{
+        boxShadow: "10px 20px 30px rgba(138, 112, 55, 0.2)",
+        scale:1.05,
+    }
+}
+

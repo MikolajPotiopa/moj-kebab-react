@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { MdClose } from "react-icons/md";
 import { CartContext } from "../Main/CartContext";
 import CartLine from "./CartLine";
-import { cartBlockCloseBtnVariant } from "../tablesOfData/variants";
+import { cartBlockCloseBtnVariant,cartBuyBtnVariant } from "../tablesOfData/variants";
 import { useContext, useEffect, useState } from "react";
 
 import { loadStripe } from "@stripe/stripe-js";
@@ -88,7 +88,14 @@ export default function CartBlock({onClose}){
                     <div className="cartFullCost">
                         {`Koszt: ${sum} zł`}
                     </div>
-                    <button onClick={handlePayment} className="cartBuyBtn">Zamów Online</button> 
+                    <motion.button
+                     onClick={handlePayment}
+                     className="cartBuyBtn"
+                     variants={cartBuyBtnVariant}
+                     initial="initial"
+                     whileHover="hoverState"
+                     whileTap="tapState"
+                    >Zamów Online</motion.button> 
                 </div>
             )
             }
