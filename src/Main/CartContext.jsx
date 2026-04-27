@@ -5,8 +5,15 @@ export const CartContext = createContext();
 
 
 export function CartProvider({children}){
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(()=>{
+        const savedCart = localStorage.getItem('kebab_cart');
 
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
+
+    useEffect(()=>{
+        localStorage.setItem('kebab_cart',JSON.stringify(cart));
+    },[cart])
     const addToCart = (product)=>{
         const isExist = cart.find(item => item.id === product.id && 
             item.size === product.size &&

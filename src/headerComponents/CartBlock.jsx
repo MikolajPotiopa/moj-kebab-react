@@ -14,29 +14,41 @@ export default function CartBlock({onClose}){
 
 
     const handlePayment = async () => {
-        const stripe = await stripePromise;
+        try {
+            // 1. Informujemy użytkownika (opcjonalnie), że proces startuje
+            console.log("Inicjalizacja płatności dla koszyka:", cart);
 
-        // 1. Wysyłamy koszyk do funkcji Netlify
-        const response = await fetch('/.netlify/functions/create-checkout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ cart: cart }), // Twoja tablica cart z Contextu
-        });
+            // 2. Wywołujemy Twoją funkcję Netlify
+            const response = await fetch('/.netlify/functions/create-checkout', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify({ cart: cart }),
+            });
 
-        const session = await response.json();
+            // 3. Odbieramy dane z serwera
+            const data = await response.json();
 
-        if (session.error) {
-            alert("Błąd płatności: " + session.error);
-            return;
-        }
+            // 4. Obsługa błędów przesłanych z backendu
+            if (data.error) {
+                console.error("Błąd z serwera:", data.error);
+                alert("Wystąpił problem: " + data.error);
+                return;
+            }
 
-        // 2. Przekierowanie klienta do Stripe Checkout
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.id,
-        });
+            // 5. KLUCZOWY MOMENT: Przekierowanie na adres URL sesji Stripe
+            if (data.url) {
+                console.log("Przekierowuję do Stripe Checkout...");
+                window.location.href = data.url; 
+            } else {
+                alert("Błąd: Nie otrzymano adresu płatności.");
+            }
 
-        if (result.error) {
-            alert(result.error.message);
+        } catch (err) {
+            // Obsługa błędów sieciowych (np. brak internetu)
+            console.error("Błąd sieci:", err);
+            alert("Nie udało się połączyć z serwerem płatności.");
         }
     };
 
