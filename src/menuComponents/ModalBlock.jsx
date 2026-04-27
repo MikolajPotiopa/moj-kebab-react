@@ -28,6 +28,7 @@ export default function ModalBlock({onClose,dish}){
     const createCartPositon = ()=>{
         const cartPosition = {
             id:dish.id,
+            title:dish.title,
             size: selectedSize[0],
             cost: selectedSize[1],
             sauces: selectedSauces

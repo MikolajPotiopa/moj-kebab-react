@@ -12,7 +12,6 @@ export default function CartLine({dish}){
         addToCart(dish);
         setChange(change+1);
     }
-    console.log(dish);
     return(
         
         <li key={dish.id} className="cart-li">

@@ -8,7 +8,7 @@ exports.handler = async (event) => {
 
   try {
     const { cart } = JSON.parse(event.body);
-
+    console.log("Mój koszyk odebrany przez serwer:", cart); 
     // Budujemy listę produktów dla Stripe
     const line_items = cart.map(item => ({
       price_data: {
@@ -19,7 +19,7 @@ exports.handler = async (event) => {
           description: item.sauces ? `Sosy: ${item.sauces.join(', ')}` : '',
         },
         // Stripe chce ceny w groszach (np. 35 zł = 3500)
-        unit_amount: Math.round(item.price * 100), 
+        unit_amount: Math.round(item.cost * 100), 
       },
       quantity: item.qty,
     }));
@@ -35,7 +35,7 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ id: session.id }),
+      body: JSON.stringify({ url: session.url }), //idddddddddddddddd
     };
   } catch (error) {
     console.error(error);

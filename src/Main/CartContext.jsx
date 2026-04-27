@@ -42,9 +42,6 @@ export function CartProvider({children}){
         }
         
     }
-    useEffect(()=>{
-    console.log(cart)
-},[cart]);
     return(
         <CartContext.Provider value={{cart,addToCart,subtractFromCart}}>
             {children}
