@@ -9,6 +9,10 @@ exports.handler = async (event) => {
   try {
     const { cart } = JSON.parse(event.body);
     console.log("Mój koszyk odebrany przez serwer:", cart); 
+
+    const totalAmount = cart.reduce((total,item)=>{
+      return total + (item.cost * item.qty);
+    },0)
     // Budujemy listę produktów dla Stripe
     const line_items = cart.map(item => ({
       price_data: {
@@ -29,7 +33,17 @@ exports.handler = async (event) => {
       payment_method_types: ['card', 'blik', 'p24'], // Polskie metody płatności
       line_items,
       mode: 'payment',
-      success_url: `${process.env.URL}/?success=true`, // Gdzie wrócić po zapłaceniu
+
+      metadata:{
+        cartItems: JSON.stringify(cart.map(item =>({
+          name: item.title,
+          size: item.size,
+          sauces: item.sauces.join(', '),
+          qty: item.qty
+        }))),
+        totalPrice : JSON.stringify(totalAmount.toFixed(2))
+      },
+      success_url: `${process.env.URL}/success`, // Gdzie wrócić po zapłaceniu
       cancel_url: `${process.env.URL}/?canceled=true`, // Gdzie wrócić po rezygnacji
     });
 
