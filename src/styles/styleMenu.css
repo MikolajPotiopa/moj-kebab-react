@@ -264,16 +264,21 @@
 
 .modalBlockSize-li {
     padding: 15px 0;
-    font-size: 16px;
     border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.modalBlockSize-li label{
+    cursor: pointer;
     display: flex;
     align-items: center;
+    font-size: 16px;
     gap: 12px;
-    cursor: pointer;
+}
+.modalBlockSize-li label span{
+    font-size: 16px;
 }
 
 
-.modalBlockSize-li input {
+.modalBlockSize-li label input {
     accent-color: var(--color-orange); 
     width: 18px;
     height: 18px;
@@ -293,6 +298,9 @@
     border-radius: 12px;
     margin-top: 30px;
     transition: 0.3s;
+}
+.modalBlockErrorMessage{
+    color: rgb(208, 84, 84);
 }
 
 .modalBlockContent::-webkit-scrollbar {

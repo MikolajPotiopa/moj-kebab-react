@@ -7,6 +7,7 @@ import Menu from './Menu'
 import Rest from './Rest'
 import Kitchen from './Kitchen'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import EndPoint from './EndPoint'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById('root')).render(
          
         }/>
         <Route path="/kitchen" element={<Kitchen/>}/>
+        <Route path='/succes' element={<EndPoint/>}/>
       </Routes>
     </BrowserRouter>
      </CartProvider>

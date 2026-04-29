@@ -340,3 +340,20 @@ export const cartBuyBtnVariant = {
     }
 }
 
+
+export const modalBlockBtnAddVariant ={
+    initial:{
+        scale:1,
+        rotate:0
+    },
+    hoverState:{
+        scale:1.05,
+        rotate:[0,-10,10,0],
+        transition:{duration:0.4,ease:"easeInOut"}
+    },
+    tapState:{
+        scale:0.95,
+        rotate:[0,-30,30,0],
+        transition:{duration:0.7,ease:"easeInOut"}
+    }
+}

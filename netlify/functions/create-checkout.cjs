@@ -41,9 +41,9 @@ exports.handler = async (event) => {
           sauces: item.sauces.join(', '),
           qty: item.qty
         }))),
-        totalPrice : totalAmount.toFixed(2)
+        total_amount : totalAmount.toFixed(2)
       },
-      success_url: `${process.env.URL}/`, // Gdzie wrócić po zapłaceniu
+      success_url: `${process.env.URL}/succes`, // Gdzie wrócić po zapłaceniu
       cancel_url: `${process.env.URL}/?canceled=true`, // Gdzie wrócić po rezygnacji
     });
 

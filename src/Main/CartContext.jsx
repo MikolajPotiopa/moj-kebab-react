@@ -20,7 +20,9 @@ export function CartProvider({children}){
             JSON.stringify([...item.sauces].sort())===JSON.stringify([...product.sauces].sort()));
         if(isExist){
             const updateCart = cart.map(item=>
-                item.id===product.id 
+                (item.id===product.id && 
+                item.size === product.size &&
+                JSON.stringify([...item.sauces].sort())===JSON.stringify([...product.sauces].sort()))
                 ? {...item, qty: item.qty +1}
                 : item
             );
@@ -47,10 +49,13 @@ export function CartProvider({children}){
                 !(item.id === product.id && item.size === product.size && JSON.stringify(item.sauces) === JSON.stringify(product.sauces)))
             setCart(newCart);
         }
-        
+    }
+    const clearCart =()=>{
+        setCart([]);
+        localStorage.removeItem('kebab_cart');
     }
     return(
-        <CartContext.Provider value={{cart,addToCart,subtractFromCart}}>
+        <CartContext.Provider value={{cart,addToCart,subtractFromCart,clearCart}}>
             {children}
         </CartContext.Provider>
     );

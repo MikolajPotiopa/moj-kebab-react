@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { MdClose } from "react-icons/md";
 import { textForSauces,sauces } from "../tablesOfData/Sauces";
+import { modalBlockBtnAddVariant } from "../tablesOfData/variants";
 
 
 export default function ModalBlock({onClose,dish}){
@@ -13,6 +14,7 @@ export default function ModalBlock({onClose,dish}){
     const maxSauces = 2;
     const [selectedSauces, setSelectedSauces] = useState([]);
     const [selectedSize, setSelectedSize] = useState([])
+    const [errorMessage,setErrorMessage] =useState("");
 
     const handleSelectedSauces = (option) =>{
         if(selectedSauces.includes(option)){
@@ -38,15 +40,15 @@ export default function ModalBlock({onClose,dish}){
 
     const handleConfirm = () =>{
         if(selectedSize.length === 0){
-            alert("Prosze wybrać rozmiar");
+            setErrorMessage("Prosze wybrać rozmiar")
             return;
         }
         if(dish.sauce && selectedSauces.length ===0){
-            alert("Prosze wybrać przynajmniej jeden sos")
+            setErrorMessage("Prosze wybrać przynajmniej jeden sos");
             return;
         }
         if(selectedSauces.length > maxSauces){
-            alert(`Możesz wybrać maksymalnie ${maxSauces} sosy`)
+            setErrorMessage(`Możesz wybrać maksymalnie ${maxSauces} sosy`)
             return;
         }
 
@@ -69,6 +71,7 @@ export default function ModalBlock({onClose,dish}){
     },[selectedSauces]);
 
     useEffect(()=>{
+        setErrorMessage("");
         console.log(`selectedSauces: ${selectedSauces} selectedSize: ${selectedSize}`)
     },[selectedSauces,selectedSize])
 
@@ -94,20 +97,23 @@ export default function ModalBlock({onClose,dish}){
                     <div className="modalBlockUnderLineText">Wybierz 1</div>
                 </div>
                 <ul className="modalBlockSize-ul">
-                    {dish.info.map((item,index)=>(
-                    <li key={index} className="modalBlockSize-li">
-                        <input
-                        type="radio" 
-                        name="sizeRadio"
-                        onChange={()=>setSelectedSize([item.size,item.cost])}
-                        />
-                        <label htmlFor="sizeRadio"
+                    {dish.info.map((item,index)=>{
+                        const sizeId = `size-${index}`;
+                        return(
+                        <li key={index} className="modalBlockSize-li" htmlFor={sizeId}>
+                        <label 
                         >
-                            {`${item.size ? item.size:""} - ${item.cost ? `${item.cost}zł`:""} 
-                            ${ item.weight ? (`(${item.weight}g)`):""}`}
+                            <input
+                            type="radio" 
+                            name="sizeRadio"
+                            id={sizeId}
+                            onChange={()=>setSelectedSize([item.size,item.cost])}
+                            />
+                        <span>{`${item.size ? item.size:""} - ${item.cost ? `${item.cost}zł`:""} 
+                            ${ item.weight ? (`(${item.weight}g)`):""}`}</span>
                         </label> 
-                    </li>
-                    ))}
+                    </li>);
+                    })}
                 </ul>
                 {dish.sauce?
                 (
@@ -118,25 +124,42 @@ export default function ModalBlock({onClose,dish}){
                             <div className="modalBlockUnderLineText">{textForSauces.description}</div>
                         </div>
                         <ul className="modalBlockSize-ul">
-                            {sauces.map((item,index)=>(
-                            <li key={index} className="modalBlockSize-li">
-                                <input 
-                                type="checkbox" 
-                                name="sauceCheckBox"
-                                onChange={()=>handleSelectedSauces(item.sauce)}
-                                />
-                                <label htmlFor="sauceCheckBox"
-                                >
-                                    {`${item.sauce}`}
-                                </label> 
-                            </li>
-                            ))}
+                            {sauces.map((item,index)=>{
+                                const sauceId = `sauce-${index}`;
+                            return(
+                                <li key={index} className="modalBlockSize-li">
+                                    <label htmlFor={sauceId}
+                                    >
+                                        <input 
+                                        type="checkbox" 
+                                        name="sauceCheckBox"
+                                        id={sauceId}
+                                        onChange={()=>handleSelectedSauces(item.sauce)}
+                                        />
+                                        <span>{`${item.sauce}`}</span>
+
+                                    </label> 
+                                </li>
+                                );
+                            })}
                         </ul>
                     </div>
                 )
                 :""
                 }
-                <button onClick={handleConfirm} className="modalBlockBtnAdd">DODAJ DO KOSZYKA</button>
+                {errorMessage!=="" &&(
+                    <div className="modalBlockErrorMessage">
+                        {errorMessage}
+                    </div>
+                )}
+                <motion.button 
+                onClick={handleConfirm} 
+                className="modalBlockBtnAdd"
+                variants={modalBlockBtnAddVariant}
+                initial="initial"
+                whileHover="hoverState"
+                whileTap="tapState"
+                >DODAJ DO KOSZYKA</motion.button>
             </div>
         </motion.div>
     );

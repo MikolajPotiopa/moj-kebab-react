@@ -89,7 +89,7 @@ export default function Header()
             <motion.div className="stickyCart" >
                 <motion.button className="cartButton" onClick={()=>setOpen(true)} variants={cartButtonVariant} initial="initial" whileHover="hoverState" whileTap="tapState" >
                     <FaShoppingCart className="cartIcon"/>
-                    <span className="cartBadge">{cart.length}</span>
+                    <span className="cartBadge">{cart.reduce((sum,{qty})=>{return sum+qty},0)}</span>
                 </motion.button>
             </motion.div>
             <Cart onClose={()=>setOpen(false)} isOpen={isOpen}></Cart>

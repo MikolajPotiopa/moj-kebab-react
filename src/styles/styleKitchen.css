@@ -1,0 +1,145 @@
+.kitchen {
+    background-color: #0f0f0f;
+    min-height: 100vh;
+    padding: 20px;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #ffffff;
+}
+
+.radioNewTitle, .radioDoneTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 10px;
+    text-transform: uppercase;
+    color: #ff9800; 
+    cursor: pointer;
+}
+
+.radioNew, .radioDone {
+    margin-right: 30px;
+    transform: scale(1.5); 
+    cursor: pointer;
+    accent-color: #ff9800;
+}
+
+
+.kitchen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-content: flex-start;
+}
+
+
+.orderBlock {
+    background-color: #1a1a1a; 
+    border: 2px solid #333;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+
+.orderNr {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #ffffff;
+    border-bottom: 3px solid #ff9800;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+
+.order-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.order-li {
+    background-color: #252525;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 6px;
+    border-left: 5px solid #ff9800;
+}
+
+.orderName {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.orderSize {
+    color: #ff9800;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.orderQty {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    background: #444;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.orderSauces {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-top: 5px;
+    border-top: 1px solid #333;
+    padding-top: 5px;
+}
+
+
+.orderStatus {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 15px 0;
+    padding: 5px;
+    background-color: #333;
+    border-radius: 4px;
+    color: #aaa;
+}
+
+.doneButton {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.doneButton:hover {
+    background-color: #388e3c;
+}
+
+.doneButton:active {
+    background-color: #1b5e20;
+    transform: translateY(2px);
+}
+
+@media (max-width: 600px) {
+    .orderBlock {
+        max-width: 100%;
+    }
+}

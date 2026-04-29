@@ -289,7 +289,13 @@
 }
 
 
-
+.cartContent::-webkit-scrollbar {
+    width: 5px;
+}
+.cartContent::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
 
 
 
