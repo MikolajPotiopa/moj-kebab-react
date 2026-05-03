@@ -1,61 +1,59 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { createClient } = require('@supabase/supabase-js');
+
+const supabase = createClient(
+  process.env.VITE_SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
 
 exports.handler = async (event) => {
-  // Tylko prośby typu POST są dozwolone
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
-  }
+  const sig = event.headers['stripe-signature'];
+  const secret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  console.log("--- NOWA PRÓBA WEBHOOKA ---");
+  console.log("Nagłówek Signature:", sig ? "OBECNY" : "BRAK!");
+  console.log("Webhook Secret (początek):", secret ? secret.substring(0, 10) : "BRAK KLUCZA W ENV!");
+
+  let stripeEvent;
 
   try {
-    const { cart } = JSON.parse(event.body);
-    console.log("Mój koszyk odebrany przez serwer:", cart); 
 
-    const totalAmount = cart.reduce((total,item)=>{
-      return total + (item.cost * item.qty);
-    },0)
-    // Budujemy listę produktów dla Stripe
-    const line_items = cart.map(item => ({
-      price_data: {
-        currency: 'pln',
-        product_data: {
-          name: `${item.title} (${item.size})`,
-          // Jeśli masz sosy, dodajemy je do opisu
-          description: item.sauces ? `Sosy: ${item.sauces.join(', ')}` : '',
-        },
-        // Stripe chce ceny w groszach (np. 35 zł = 3500)
-        unit_amount: Math.round(item.cost * 100), 
-      },
-      quantity: item.qty,
-    }));
+    const rawBody = event.isBase64Encoded 
+      ? Buffer.from(event.body, 'base64').toString() 
+      : event.body;
 
-    // Tworzymy sesję płatności
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'blik', 'p24'], // Polskie metody płatności
-      line_items,
-      mode: 'payment',
-
-      metadata:{
-        cartItems: JSON.stringify(cart.map(item =>({
-          name: item.title,
-          size: item.size,
-          sauces: item.sauces.join(', '),
-          qty: item.qty
-        }))),
-        total_amount : totalAmount.toFixed(2)
-      },
-      success_url: `${process.env.URL}/succes`, // Gdzie wrócić po zapłaceniu
-      cancel_url: `${process.env.URL}/`, // Gdzie wrócić po rezygnacji
-    });
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ url: session.url }), //idddddddddddddddd
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+    stripeEvent = stripe.webhooks.constructEvent(rawBody, sig, secret);
+  } catch (err) {
+    console.error("BŁĄD WERYFIKACJI PODPISU:", err.message);
+    return { 
+      statusCode: 400, 
+      body: `Webhook Error: ${err.message}` 
     };
   }
+
+  if (stripeEvent.type === 'checkout.session.completed') {
+    const session = stripeEvent.data.object;
+    const cartItems = JSON.parse(session.metadata.cart);
+    const totalPrice = session.metadata.total_price;
+
+    console.log("Próba zapisu do Supabase dla sesji:", session.id);
+
+    const { error } = await supabase
+      .from('orders')
+      .insert([{
+        items: cartItems,
+        total_price: parseFloat(totalPrice),
+        payment_id: session.id,
+        status: 'nowe'
+      }]);
+
+    if (error) {
+      console.error("BŁĄD SUPABASE:", error.message);
+      return { statusCode: 500, body: error.message };
+    }
+    
+    console.log("SUKCES: Zamówienie zapisane!");
+  }
+
+  return { statusCode: 200, body: JSON.stringify({ received: true }) };
 };
