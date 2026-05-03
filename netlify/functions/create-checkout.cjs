@@ -44,7 +44,7 @@ exports.handler = async (event) => {
         total_amount : totalAmount.toFixed(2)
       },
       success_url: `${process.env.URL}/succes`, // Gdzie wrócić po zapłaceniu
-      cancel_url: `${process.env.URL}/?canceled=true`, // Gdzie wrócić po rezygnacji
+      cancel_url: `${process.env.URL}/`, // Gdzie wrócić po rezygnacji
     });
 
     return {
