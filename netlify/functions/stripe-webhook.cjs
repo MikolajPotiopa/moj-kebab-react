@@ -8,17 +8,25 @@ const supabase = createClient(
 );
 
 exports.handler = async (event) => {
+  // --- DODAJ TE LOGI DLA DEBUGOWANIA ---
+  console.log("--- START WEBHOOKA ---");
+  console.log("Nagłówek Signature:", event.headers['stripe-signature'] ? "JEST" : "BRAK");
+  
+  const secret = process.env.STRIPE_WEBHOOK_SECRET;
+  if (!secret) {
+    console.log("BŁĄD: Brak klucza STRIPE_WEBHOOK_SECRET w zmiennych środowiskowych!");
+  } else {
+    console.log("Klucz zaczyna się od:", secret.substring(0, 10) + "...");
+  }
+  // -------------------------------------
+
   const sig = event.headers['stripe-signature'];
   let stripeEvent;
 
   try {
-    // Weryfikacja, czy to na pewno Stripe
-    stripeEvent = stripe.webhooks.constructEvent(
-      event.body,
-      sig,
-      process.env.STRIPE_WEBHOOK_SECRET
-    );
+    stripeEvent = stripe.webhooks.constructEvent(event.body, sig, secret);
   } catch (err) {
+    console.log("BŁĄD WERYFIKACJI PODPISU:", err.message); // To nam powie co jest nie tak
     return { statusCode: 400, body: `Webhook Error: ${err.message}` };
   }
 
