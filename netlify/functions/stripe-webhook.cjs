@@ -1,59 +1,59 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { createClient } = require('@supabase/supabase-js');
 
-// Łączymy się z Supabase (używając klucza admina SERVICE_ROLE)
 const supabase = createClient(
   process.env.VITE_SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
 exports.handler = async (event) => {
-  // --- DODAJ TE LOGI DLA DEBUGOWANIA ---
-  console.log("--- START WEBHOOKA ---");
-  console.log("Nagłówek Signature:", event.headers['stripe-signature'] ? "JEST" : "BRAK");
-  
-  const secret = process.env.STRIPE_WEBHOOK_SECRET;
-  if (!secret) {
-    console.log("BŁĄD: Brak klucza STRIPE_WEBHOOK_SECRET w zmiennych środowiskowych!");
-  } else {
-    console.log("Klucz zaczyna się od:", secret.substring(0, 10) + "...");
-  }
-  // -------------------------------------
-
   const sig = event.headers['stripe-signature'];
+  const secret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  // LOGI POMOCNICZE - zobaczysz je w Netlify Functions Tab
+  console.log("--- NOWA PRÓBA WEBHOOKA ---");
+  console.log("Nagłówek Signature:", sig ? "OBECNY" : "BRAK!");
+  console.log("Webhook Secret (początek):", secret ? secret.substring(0, 10) : "BRAK KLUCZA W ENV!");
+
   let stripeEvent;
 
   try {
-    stripeEvent = stripe.webhooks.constructEvent(event.body, sig, secret);
+    // WAŻNE: Netlify czasem przesyła body jako Base64. Musimy to obsłużyć:
+    const rawBody = event.isBase64Encoded 
+      ? Buffer.from(event.body, 'base64').toString() 
+      : event.body;
+
+    stripeEvent = stripe.webhooks.constructEvent(rawBody, sig, secret);
   } catch (err) {
-    console.log("BŁĄD WERYFIKACJI PODPISU:", err.message); // To nam powie co jest nie tak
-    return { statusCode: 400, body: `Webhook Error: ${err.message}` };
+    console.error("BŁĄD WERYFIKACJI PODPISU:", err.message);
+    return { 
+      statusCode: 400, 
+      body: `Webhook Error: ${err.message}` 
+    };
   }
 
-  // Obsługa zdarzenia: Płatność udana
   if (stripeEvent.type === 'checkout.session.completed') {
     const session = stripeEvent.data.object;
+    const cartItems = JSON.parse(session.metadata.cart);
+    const totalPrice = session.metadata.total_price;
 
-    // Wyciągamy nasze dane z metadata
-    const cartItems = JSON.parse(session.metadata.cartItems);
-    const totalPrice = session.metadata.total_amount;
+    console.log("Próba zapisu do Supabase dla sesji:", session.id);
 
-    // Zapisujemy do bazy danych Supabase
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('orders')
-      .insert([
-        {
-          items: cartItems,
-          total_price: parseFloat(totalPrice),
-          payment_id: session.id,
-          status: 'nowe'
-        }
-      ]);
+      .insert([{
+        items: cartItems,
+        total_price: parseFloat(totalPrice),
+        payment_id: session.id,
+        status: 'nowe'
+      }]);
 
     if (error) {
-      console.error('Supabase error:', error);
-      return { statusCode: 500, body: 'Błąd bazy danych' };
+      console.error("BŁĄD SUPABASE:", error.message);
+      return { statusCode: 500, body: error.message };
     }
+    
+    console.log("SUKCES: Zamówienie zapisane!");
   }
 
   return { statusCode: 200, body: JSON.stringify({ received: true }) };
