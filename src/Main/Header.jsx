@@ -19,6 +19,8 @@ import {
     cartButtonVariant
 } from "../tablesOfData/variants.jsx";
 
+
+
 export default function Header()
 {
     const { cart } = useContext(CartContext);

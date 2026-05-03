@@ -6,6 +6,7 @@ export default function EndPoint(){
 
     useEffect(()=>{
         clearCart();
+        localStorage.clear();
     },[])
     return(
         <div className="succesBlock">
