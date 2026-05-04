@@ -15,29 +15,30 @@ export default function CartBlock({onClose}){
 
     const handlePayment = async () => {
         try {
-            // 1. Informujemy użytkownika (opcjonalnie), że proces startuje
+
             console.log("Inicjalizacja płatności dla koszyka:", cart);
 
-            // 2. Wywołujemy Twoją funkcję Netlify
             const response = await fetch('/.netlify/functions/create-checkout', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json' 
                 },
-                body: JSON.stringify({ cart: cart }),
+                body: JSON.stringify({ cart: cart.map(item => ({
+                id: item.id,
+                size: item.size, 
+                qty: item.qty,
+                sauces: item.sauces
+                })) }),
             });
 
-            // 3. Odbieramy dane z serwera
             const data = await response.json();
 
-            // 4. Obsługa błędów przesłanych z backendu
             if (data.error) {
                 console.error("Błąd z serwera:", data.error);
                 alert("Wystąpił problem: " + data.error);
                 return;
             }
 
-            // 5. KLUCZOWY MOMENT: Przekierowanie na adres URL sesji Stripe
             if (data.url) {
                 console.log("Przekierowuję do Stripe Checkout...");
                 window.location.href = data.url; 
@@ -46,7 +47,6 @@ export default function CartBlock({onClose}){
             }
 
         } catch (err) {
-            // Obsługa błędów sieciowych (np. brak internetu)
             console.error("Błąd sieci:", err);
             alert("Nie udało się połączyć z serwerem płatności.");
         }

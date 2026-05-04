@@ -34,8 +34,16 @@ exports.handler = async (event) => {
 
   if (stripeEvent.type === 'checkout.session.completed') {
     const session = stripeEvent.data.object;
-    const cartItems = JSON.parse(session.metadata.cart);
-    const totalPrice = session.metadata.total_price;
+    console.log("Otrzymane Metadata:", session.metadata);
+    const rawCart = session.metadata.cartItems;
+    const totalPrice = session.metadata.total_amount; 
+
+    if (!rawCart) {
+        console.error("BŁĄD: Brak klucza cartItems w metadata!");
+        return { statusCode: 400, body: "Brak danych koszyka" };
+    }
+
+    const cartItems = JSON.parse(rawCart);
 
     console.log("Próba zapisu do Supabase dla sesji:", session.id);
 
