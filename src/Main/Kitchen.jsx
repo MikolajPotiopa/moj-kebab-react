@@ -101,8 +101,9 @@ export default function Kitchen(){
 
     if(!authenticated){
         return(
-            <div>
-                <input type="text" onChange={(e)=>handleChange(e.target.value)} />
+            <div className="kitchenLoginBox">
+                <div className="kitchenLoginBoxTitle">Zaloguj się do Kuchni:</div>
+                <input className="kichtenLoginBoxInput" type="text" onChange={(e)=>handleChange(e.target.value)} />
             </div>
         );
     }else{

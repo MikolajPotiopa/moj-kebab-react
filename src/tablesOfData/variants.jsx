@@ -1,4 +1,4 @@
-import { animate, delay, easeIn, scale, transform } from "framer-motion"
+import { animate, color, delay, easeIn, hover, scale, transform } from "framer-motion"
 import { RxShadow } from "react-icons/rx"
 
 export const headerButtonVariant = 
@@ -322,6 +322,11 @@ export const cartBlockCloseBtnVariant={
         backgroundColor:'rgba(223, 152, 0,1)',
         rotate:90,
         transition:{type: "spring", stiffness: 100,power:10}
+    },
+    tapState:{
+        backgroundColor:'rgba(223, 152, 0,1)',
+        rotate:110,
+        transition:{type: "spring", stiffness: 100,power:10}
     }
 }
 
@@ -355,5 +360,28 @@ export const modalBlockBtnAddVariant ={
         scale:0.95,
         rotate:[0,-30,30,0],
         transition:{duration:0.7,ease:"easeInOut"}
+    }
+}
+export const footerBoxVariantLink={
+    initial:{
+        color: "#6f6f6f" 
+    },
+    hoverState:{
+        color: "var(--color-orange)"
+    }
+}
+
+
+export const burgerNavigationVartiants={
+    initial:{
+        color:"rgba(255,255,255,1)",
+        scale:1.00
+    },
+    hoverState:{
+        color:"var(--color-orange)",
+        scale:1.05
+    },
+    tapState:{
+        scale:1.10
     }
 }

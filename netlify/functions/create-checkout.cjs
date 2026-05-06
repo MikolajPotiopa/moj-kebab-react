@@ -24,8 +24,8 @@ exports.handler = async (event) => {
     
     const dbProduct = dbProducts.find(p => p.id === item.id);
 
-    let finalPrice = dbProduct.price_medium;
-    if (item.size === 'Mały') finalPrice = dbProduct.price_small;
+    let finalPrice = dbProduct.price_standard;
+    if (item.size === 'Średni') finalPrice = dbProduct.price_medium;
     if (item.size === 'Mega' || item.size === 'Duże') finalPrice = dbProduct.price_large;
     return{
     price_data: {

@@ -1,10 +1,9 @@
-export const texts =
-[
-    'Witamy w habibi',
-    'Miejscu które powstało z miłości do zdrowej i dobrej żywności',
-    'Zapraszamy do Habibi Kebab Wawer',
-    'Dla nas jakość ma znaczenie',
-    'Każda propozycja w menu jest przygotowywana przez nas osobiście, i robimy to z najwyższej jakości składników oraz zdrowych dodatków',
-    'Podstawowymi produktami w naszej kuchni są ekologiczne mięsa, świeże warzywa, zdrowe zioła, oliwa z oliwek oraz sosy na bazie labnehu – wszystko naturalne i zdrowe, bez chemii, cukrów, majonezów, wzmacniaczy smaków, sterydów, antybiotyków, pasz GMO...',
+export const texts = [
     
+    'Witamy w Golden Kebab',
+    'Przestrzeń stworzona z pasji do autentycznej i wartościowej kuchni',
+    'Odkryj nową definicję smaku w Golden Kebab',
+    'W naszym standardzie jakość jest bezkompromisowa',
+    'Każdą pozycję w menu tworzymy od podstaw, selekcjonując wyłącznie szlachetne składniki oraz naturalne, prozdrowotne dodatki',
+    'Fundamentem naszej kuchni są certyfikowane mięsa, świeże zbiory warzyw i autorskie sosy na bazie labnehu. Gwarantujemy czysty skład: bez chemii, cukru, majonezów, wzmacniaczy smaku, antybiotyków oraz żywności modyfikowanej GMO',
 ];

@@ -24,6 +24,13 @@
     padding-bottom: 140px;
 } 
 
+@media(max-width:1000px){
+    .boxes{
+        flex-direction: column;
+    }
+
+}
+
 .icon
 {
     display: flex;
@@ -189,6 +196,7 @@
     font-size: 40px;
     font-weight: 600;
     padding-bottom: 50px;
+    text-align: center;
 }
 .postInfoBoxDescription, .postInfoBoxText{
     padding-bottom:30px;

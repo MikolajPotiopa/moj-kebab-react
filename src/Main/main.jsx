@@ -8,6 +8,7 @@ import Rest from './Rest'
 import Kitchen from './Kitchen'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import EndPoint from './EndPoint'
+import CookieBanner from '../headerComponents/CookieBaner'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element=
         {
           <>
+            <CookieBanner/>
             <Header />
             <Inside />
             <Menu/>

@@ -17,7 +17,7 @@
 
 .header
 {
-   background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/Img/doorPhoto.png");
+   background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/Img/BackgroundImg.png");
     background-size: cover;       
     background-position-y: 50%;  
     background-repeat: no-repeat; 
@@ -32,6 +32,118 @@
     padding-bottom: 50px;
     
 }
+
+
+
+.headerImg img{
+    border-radius: 50%;
+}
+
+.topHeaderBurgerBox{
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding:10px 100px 10px 10px;
+}
+.headerImg
+{
+
+    height: 120px;
+    padding-left: 120px;
+    padding-right: 20px;
+    
+}
+.headerImg img
+{
+    max-width: 110px;
+    height: 120px;
+}
+@media(max-width:400px){
+    .topHeader{
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 0px;
+    }
+    .headerImg , .topHeaderBurgerBox{
+        padding: 0px;
+        padding-right: 20px;
+    }
+}
+.topHeaderBurgerButton{
+    background-color: var(--color-orange);
+    outline: none;
+    border: 3px solid rgb(125, 84, 8);
+    border-radius: 5px ;
+    max-width:50px ;
+    width: 100%;
+    height: 50px;
+}
+
+.burgerBlock{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    z-index: 100000;
+}
+
+
+.burgerInside {
+    
+    background-color: #000000; 
+    height: 100vh;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    box-shadow: -10px 0 30px rgba(0,0,0,0.8); 
+    border-left: 2px solid #ff9800;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.BurgerInsideCloseBtn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: #ff9800; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.burgerInsideDivs {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; 
+}
+
+.burgerInsideLine {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    cursor: pointer;
+    text-align: left;
+}
+
+
+
+
 .sticky{
     position: fixed;
     top: 0;
@@ -156,7 +268,7 @@
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
-/* --- PRZYCISK ZAMKNIJ --- */
+
 .cartCloseBtn {
     position: absolute;
     top: 20px;
@@ -189,7 +301,7 @@
     padding-bottom: 20px;
 }
 
-/* --- OBRAZEK --- */
+
 .cartImgs {
     width: 100px;
     height: 80px;
@@ -316,19 +428,7 @@
 
 
 
-.headerImg
-{
 
-    height: 120px;
-    padding-left: 120px;
-    padding-right: 20px;
-    
-}
-.headerImg img
-{
-    max-width: 110px;
-    height: 120px;
-}
 .headerButton
 {
     padding-left: 50px;
@@ -364,11 +464,16 @@
     padding-right: 15px;
 }
 
-.topNav a
+.topNav button
 {
     font-size: 20px;
     text-decoration: none;
     font-family: sans-serif;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    
 }
 
 /*BottomHeader*/
@@ -378,6 +483,12 @@
     height: 800px ;
     padding-top: 150px;
 }
+
+@media(max-width:800px){
+    .bottomHeader{
+        scale: 0.8;
+    }
+}
 .frontTexts
 {
     display: flex;
@@ -386,7 +497,8 @@
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    width: 700px;
+    max-width: 700px;
+    width: 100%;
 }
 .firstText
 {

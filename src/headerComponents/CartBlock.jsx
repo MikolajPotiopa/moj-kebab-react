@@ -71,6 +71,7 @@ export default function CartBlock({onClose}){
              variants={cartBlockCloseBtnVariant}
              initial="initial"
              whileHover="hoverState"
+             whileTap="tapState"
              onClick={()=>onClose()}
             >
                 

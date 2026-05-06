@@ -8,6 +8,7 @@ import Img from "../basicComponents/Img.jsx";
 import Text from "../basicComponents/Text.jsx";
 import Link from "../basicComponents/Link.jsx";
 import Cart from "./Cart.jsx";
+import BurgerBlock from "../headerComponents/BurgerBlock.jsx";
 import {texts} from "../tablesOfData/Texts.jsx"
 import { 
     headerButtonVariant, 
@@ -18,14 +19,26 @@ import {
     titleTextVariant,
     cartButtonVariant
 } from "../tablesOfData/variants.jsx";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 
 
+export const scrollInto = (id) =>{
+         const element = document.getElementsByClassName(id);
+         const oneElement = element[0];
+         if(oneElement){
+            console.log(oneElement);
+            oneElement.scrollIntoView({behavior:"smooth"});
+         }
+    }
 export default function Header()
 {
+    
     const { cart } = useContext(CartContext);
-    const [isSticky, setIsSticky] = useState(false);
+    
+    
 
+    const [isSticky, setIsSticky] = useState(false);
     
     useEffect(() =>{
         const handleScroll = () =>{
@@ -34,23 +47,72 @@ export default function Header()
         window.addEventListener("scroll",handleScroll);
         return () => window.removeEventListener("scroll",handleScroll);
     },[]);
-    //guzik do menu
+
+
+
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(()=>{
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize',handleResize);
+
+
+        width > 1000 && 
+        (
+            setShouldBurger(false)
+        )
+        width<1000 &&
+        (
+            setShouldBurger(true)
+        )
+        return () => window.removeEventListener('resize',handleResize)
+
+        
+    },[])
+
+
+
+    const [shouldBurger, setShouldBurger] = useState(true);
+
+    useEffect(()=>{
+        width > 1000 && 
+        (
+            setShouldBurger(false),
+            setBurgerClicked(false)
+        )
+        width<1000 &&
+        (
+            setShouldBurger(true)
+        )
+    },[width])
+
+    
+    const [isBurgerClicked, setBurgerClicked] = useState(false);
+
     const [isOpen,setOpen] = useState(false);
     
 
     return(
         <div className="header">
+            <BurgerBlock isOpen={isBurgerClicked} onClose={()=>setBurgerClicked(false)} ></BurgerBlock>
             <div className="topHeader">
-                <Img className={'headerImg'} imgSrc={'/Img/HeaderIcon.png'} imgAlt={'logo'}></Img>
-                <div className="navigationBar">
-                    <TopNav value={'Start'} dir={' '} variant={topNavVariant}></TopNav>
-                    <TopNav value={'O nas'} dir={' '} variant={topNavVariant}></TopNav>
-                    <TopNav value={'Menu'} dir={' '} variant={topNavVariant}></TopNav>
-                    <TopNav value={'Opinie'} dir={' '} variant={topNavVariant}></TopNav>
-                    <TopNav value={'Galeria'} dir={' '} variant={topNavVariant}></TopNav>
-                    <TopNav value={'Kontakt'} dir={' '} variant={topNavVariant}></TopNav>
-                </div>
-                <Button className={'headerButton'} value={'Zamów online'} variant={headerButtonVariant}/>
+                <Img className={'headerImg'} imgSrc={'/Img/HeaderIcon2.png'} imgAlt={'logo'}></Img>
+                {!shouldBurger ?(
+                    <>
+                        <div className="navigationBar">
+                            <TopNav value={'Start'} dir={'header'} variant={topNavVariant}></TopNav>
+                            <TopNav value={'O nas'} dir={'boxes'} variant={topNavVariant}></TopNav>
+                            <TopNav value={'Menu'} dir={'menuDiv'} variant={topNavVariant}></TopNav>
+                            <TopNav value={'Kontakt'} dir={'rest'} variant={topNavVariant}></TopNav>
+                        </div>
+                        <Button functions={()=>scrollInto('menu')} className={'headerButton'}  value={'Zamów online'} variant={headerButtonVariant}/>
+                    </>
+                ):(
+                    <div className="topHeaderBurgerBox">
+                        <motion.button onClick={()=>setBurgerClicked(!isBurgerClicked)} className="topHeaderBurgerButton"><GiHamburgerMenu size="30px"/></motion.button>
+                    </div>
+                )}
+                
             </div>
 
             <AnimatePresence>
@@ -62,16 +124,23 @@ export default function Header()
                     exit={{y:-100}}
                     transition={{duration:0.3}}
                     >
-                            <Img className={'headerImg'} imgSrc={'/Img/HeaderIcon.png'} imgAlt={'logo'}></Img>
-                        <div className="navigationBar">
-                            <TopNav value={'Start'} dir={' '} variant={topNavVariant}></TopNav>
-                            <TopNav value={'O nas'} dir={' '} variant={topNavVariant}></TopNav>
-                            <TopNav value={'Menu'} dir={' '} variant={topNavVariant}></TopNav>
-                            <TopNav value={'Opinie'} dir={' '} variant={topNavVariant}></TopNav>
-                            <TopNav value={'Galeria'} dir={' '} variant={topNavVariant}></TopNav>
-                            <TopNav value={'Kontakt'} dir={' '} variant={topNavVariant}></TopNav>
+                        <Img className={'headerImg'} imgSrc={'/Img/HeaderIcon2.png'} imgAlt={'logo'}></Img>
+                        {!shouldBurger ?(
+                        <>
+                            <div className="navigationBar">
+                                <TopNav value={'Start'} dir={'header'} variant={topNavVariant}></TopNav>
+                                <TopNav value={'O nas'} dir={'boxes'}  variant={topNavVariant}></TopNav>
+                                <TopNav value={'Menu'} dir={'menuDiv'} variant={topNavVariant}></TopNav>
+                                <TopNav value={'Kontakt'} dir={'rest'} variant={topNavVariant}></TopNav>
+                            </div>
+                            <Button functions={()=>scrollInto('menu')} className={'headerButton'} value={'Zamów online'} variant={headerButtonVariant}/>
+                        </>
+                        ):(
+                            <div className="topHeaderBurgerBox">
+                            <motion.button  onClick={()=>setBurgerClicked(!isBurgerClicked)} className="topHeaderBurgerButton"><GiHamburgerMenu size="20px"/></motion.button>
                         </div>
-                        <Button className={'headerButton'} value={'Zamów online'} variant={headerButtonVariant}/>
+                        )}
+                        
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -82,7 +151,7 @@ export default function Header()
                         <Text className={'firstText'} text={texts[0]} variant={titleVariant}></Text>
                         <Text className={'secondText'} text={texts[1]} variant={titleTextVariant}></Text>
                     </div>
-                    <Button className={'frontButton'} value={'Zamów online'} variant={secondButtonVariant} ></Button>
+                    <Button functions={()=>scrollInto('menu')}  className={'frontButton'} value={'Zamów online'} variant={secondButtonVariant} ></Button>
                 </div>
                 <div className="favebookDiv">
                     <Link className={'facebook'} href={' '} value={'f'} variant={facebookVariant}></Link>
