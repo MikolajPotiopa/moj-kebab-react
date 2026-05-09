@@ -6,9 +6,17 @@ import CartBlock from "../headerComponents/CartBlock";
 export default function Cart({onClose,isOpen}){
  
     useEffect(()=>{
-            isOpen ?
-            document.body.style.overflow = "hidden" :
-            document.body.style.overflow = "unset";
+            console.log(isOpen);
+
+             if (isOpen) {
+                document.body.classList.add('no-scroll');
+            } else {
+                document.body.classList.remove('no-scroll');
+            }
+            
+            return () => {
+                document.body.classList.remove('no-scroll');
+            };
         },[isOpen])
     return(
         <AnimatePresence>
@@ -21,7 +29,7 @@ export default function Cart({onClose,isOpen}){
                 animate="animate"
                 onClick={()=>onClose()}
                 >
-                    <CartBlock onClose={()=>onClose()}></CartBlock>
+                    <CartBlock onClose={()=>onClose()} ></CartBlock>
                 </motion.div>
             )
             }

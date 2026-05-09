@@ -9,16 +9,23 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-export default function CartBlock({onClose}){
+export default function CartBlock({onClose }){
     const {cart,addToCart} = useContext(CartContext);
 
+
+    const [emailBlock, setEmailBlock] = useState(false);
+    const [email, setEmail] = useState("")
+
+    const onEmailClose = () =>{
+        setEmailBlock(false);
+    }
 
     const handlePayment = async () => {
         try {
 
             console.log("Inicjalizacja płatności dla koszyka:", cart);
 
-            const response = await fetch('/.netlify/functions/create-checkout', {
+            const response = await fetch('/.netlify/functions/p24-payment', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json' 
@@ -28,7 +35,9 @@ export default function CartBlock({onClose}){
                 size: item.size, 
                 qty: item.qty,
                 sauces: item.sauces
-                })) }),
+                })),
+                email: email
+             }),
             });
 
             const data = await response.json();
@@ -74,7 +83,6 @@ export default function CartBlock({onClose}){
              whileTap="tapState"
              onClick={()=>onClose()}
             >
-                
                 <MdClose size={30} className="cartIcon"/>
             </motion.button>
             <ul>
@@ -90,7 +98,7 @@ export default function CartBlock({onClose}){
                         {`Koszt: ${sum} zł`}
                     </div>
                     <motion.button
-                     onClick={handlePayment}
+                     onClick={()=>setEmailBlock(true)}
                      className="cartBuyBtn"
                      variants={cartBuyBtnVariant}
                      initial="initial"
@@ -100,7 +108,46 @@ export default function CartBlock({onClose}){
                 </div>
             )
             }
-            
+            {emailBlock&&(
+                <div
+                className="cartEmail"
+                onClick={()=>onEmailClose()}
+                >
+                    <div
+                    className="cartBlockEmail"
+                    onClick={(e) =>e.stopPropagation()}
+                    >
+                        <motion.button
+                         className="cartCloseBtn"
+                         variants={cartBlockCloseBtnVariant}
+                         initial="initial"
+                         whileHover="hoverState"
+                         whileTap="tapState"
+                         onClick={()=>onEmailClose()}
+                        >
+
+                            <MdClose size={30} className="cartIcon"/>
+                        </motion.button>
+                        <input 
+                        type="email" 
+                        placeholder="Twój e-mail (do potwierdzenia)" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="email-input"
+                        />
+                        <motion.button
+                        className="emailButtonAccept"
+                        variants={cartBuyBtnVariant}
+                        initial="initial"
+                        whileHover="hoverState"
+                        whileTap="tapState"
+                        onClick={()=>handlePayment()}
+                        >
+                        Zamów online</motion.button>
+                    </div>
+                </div>
+            )}
         </motion.div>
     );
 }

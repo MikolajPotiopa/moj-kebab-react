@@ -113,10 +113,13 @@ export default function Kitchen(){
 
         return(
             <div className="kitchen" >
-                <label className="radioNewTitle">nowe</label>
-                <input className="radioNew" onChange={()=>handleNewCheckBox()} type="radio" name="checkBox"/>
-                <label className="radioDoneTitle"> zrobione</label>
-                <input className="radioDone" onChange={()=>handleDoneCheckBox()} type="radio" name="checkBox"/>
+                <div>
+                    <label className="radioNewTitle">nowe</label>
+                    <input className="radioNew" onChange={()=>handleNewCheckBox()} type="radio" name="checkBox"/>
+                    <label className="radioDoneTitle"> zrobione</label>
+                    <input className="radioDone" onChange={()=>handleDoneCheckBox()} type="radio" name="checkBox"/>
+                </div>
+                
 
                 
 
@@ -130,6 +133,9 @@ export default function Kitchen(){
                                 </li>    
                             ))}
                         </ul>
+                        <div className="orderSauces">
+                            {` ${order.email}`}
+                        </div>
                         <div className="orderStatus">{order.status}</div>
                         {order.status !== 'zrobione' &&(
                         <button className="doneButton" onClick={()=>markAsDone(order.id)}>ZROBIONE</button>

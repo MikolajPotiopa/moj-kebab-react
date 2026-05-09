@@ -9,7 +9,7 @@ export const textsForMenu=[
     },
     {
         kategoria:"Burgery",
-        text:"Burgery z Świerzą Wołowiną"
+        text:"Burgery z Świeżą Wołowiną"
     },
     {
         kategoria:"Dodatki",

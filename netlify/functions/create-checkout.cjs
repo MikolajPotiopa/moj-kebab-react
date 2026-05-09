@@ -41,20 +41,24 @@ exports.handler = async (event) => {
 
   const total_amount = line_items.reduce((sum, li) => sum + (li.price_data.unit_amount * li.quantity), 0) / 100;
 
+  const { data: newOrder, error: dbError } = await supabase
+  .from('orders')
+  .insert([{
+    items: cart, 
+    total_price: total_amount,
+    status: 'oczekuje_na_platnosc'
+  }])
+  .select()
+  .single();
+  if (dbError) throw new Error("Błąd bazy danych");
+
+
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card', 'blik', 'p24'], // Polskie metody płatności
     line_items: line_items,
     mode: 'payment',
     metadata:{
-      cartItems: JSON.stringify(cart.map(item =>{
-        const p = dbProducts.find(db => db.id === item.id)
-        return{
-          name: p.title,
-          size: item.size,
-          sauces: item.sauces.join(', '),
-          qty: item.qty
-        }
-      })),
+      order_id: newOrder.id.toString()
     },
     success_url: `${process.env.URL}/succes`, // Gdzie wrócić po zapłaceniu
     cancel_url: `${process.env.URL}/`, // Gdzie wrócić po rezygnacji

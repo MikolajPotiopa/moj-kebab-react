@@ -10,8 +10,8 @@ export default function PostImgs()
                 <img src="/Img/PostImg2.png" alt="pomidory" />
             </div>
             <div>
-                <img src="/Img/tesla.png" alt="tesla" />
-                <img src="Img/Chicken.png" alt="chicken" /> 
+                <img src="/Img/PostImg3.png" alt="tesla" />
+                <img src="Img/PostImg4.png" alt="chicken" /> 
             </div>
         </motion.div>        
     );

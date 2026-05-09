@@ -1,0 +1,131 @@
+.policyContainer {
+    background-color: #000; 
+    color: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+}
+
+
+.policyTitle {
+    color: #ff9800; 
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.policyDate {
+    color: #555;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 50px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+.policySection {
+    margin-bottom: 40px;
+    border-left: 3px solid #1a1a1a;
+    padding-left: 20px;
+}
+
+.policySection h2 {
+    color: #ff9800;
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.policySection p {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+
+.policySection ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.policySection li {
+    color: #ccc;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+
+.policySection li::before {
+    content: "•";
+    color: #ff9800;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+
+.policySection strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.policySection a {
+    color: #ff9800;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.policySection a:hover {
+    border-bottom: 1px solid #ff9800;
+}
+
+.policyBox{
+    background-color: black;
+}
+.backButtonContainer {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    background-color: #000; 
+}
+
+
+.backButton {
+    background-color: transparent;
+    color: #ff9800;
+    border: 2px solid #ff9800;
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    display: inline-block;
+    cursor: pointer;
+  
+}
+
+
+@media (max-width: 480px) {
+    .backButton {
+        width: 90%;
+        text-align: center;
+        padding: 15px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .policyTitle {
+        font-size: 1.8rem;
+    }
+    .policyContainer {
+        padding: 40px 15px;
+    }
+}

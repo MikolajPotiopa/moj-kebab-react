@@ -10,10 +10,6 @@ exports.handler = async (event) => {
   const sig = event.headers['stripe-signature'];
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
 
-  // LOGI POMOCNICZE - zobaczysz je w Netlify Functions Tab
-  console.log("--- NOWA PRÓBA WEBHOOKA ---");
-  console.log("Nagłówek Signature:", sig ? "OBECNY" : "BRAK!");
-  console.log("Webhook Secret (początek):", secret ? secret.substring(0, 10) : "BRAK KLUCZA W ENV!");
 
   let stripeEvent;
 
@@ -34,27 +30,15 @@ exports.handler = async (event) => {
 
   if (stripeEvent.type === 'checkout.session.completed') {
     const session = stripeEvent.data.object;
-    console.log("Otrzymane Metadata:", session.metadata);
-    const rawCart = session.metadata.cartItems;
-    const totalPrice = session.metadata.total_amount; 
-
-    if (!rawCart) {
-        console.error("BŁĄD: Brak klucza cartItems w metadata!");
+    const orderId = session.metadata.order_id;
+    if (!orderId) {
+        console.error("BŁĄD: Brak klucza orderId w metadata!");
         return { statusCode: 400, body: "Brak danych koszyka" };
     }
-
-    const cartItems = JSON.parse(rawCart);
-
-    console.log("Próba zapisu do Supabase dla sesji:", session.id);
-
     const { error } = await supabase
-      .from('orders')
-      .insert([{
-        items: cartItems,
-        total_price: parseFloat(totalPrice),
-        payment_id: session.id,
-        status: 'nowe'
-      }]);
+    .from('orders')
+    .update({ status: 'nowe', payment_id: session.id })
+    .eq('id', orderId);
 
     if (error) {
       console.error("BŁĄD SUPABASE:", error.message);
@@ -63,6 +47,5 @@ exports.handler = async (event) => {
     
     console.log("SUKCES: Zamówienie zapisane!");
   }
-
   return { statusCode: 200, body: JSON.stringify({ received: true }) };
 };

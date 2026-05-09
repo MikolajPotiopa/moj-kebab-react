@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import Text from "../basicComponents/Text";
-import {texts} from "../tablesOfData/Texts"
+import {texts} from "../tablesOfData/Texts";
 import Button from "../basicComponents/Button";
 import { postInfoVariant, postInfoButtonVariant }  from "../tablesOfData/variants";
-
+import {scrollInto} from "../Main/Header";
 export default function PostInfo()
 {
     return(
@@ -13,7 +13,7 @@ export default function PostInfo()
                 <Text text={texts[3]} className='postInfoBoxTitle'></Text>
                 <Text text={texts[4]} className='postInfoBoxText'></Text>
                 <Text text={texts[5]} className='postInfoBoxDescription'></Text>
-            <Button value='Zamów online' className='postInfoBoxButton' variant={postInfoButtonVariant}></Button>
+            <Button value='Zamów online' className='postInfoBoxButton' variant={postInfoButtonVariant} functions={()=>scrollInto("menuDiv")}></Button>
             </motion.div> 
         </motion.div>
         
