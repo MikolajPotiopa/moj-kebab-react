@@ -1,4 +1,4 @@
-import { P24 } from 'p24';
+import P24 from 'p24';
 import { createClient } from '@supabase/supabase-js';
 
 const p24 = new P24(
