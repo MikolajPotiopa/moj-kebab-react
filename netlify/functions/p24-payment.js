@@ -1,17 +1,51 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Supabase inicjujemy na górze
 const supabase = createClient(process.env.VITE_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 export const handler = async (event) => {
   try {
-    // --- KLUCZOWY MOMENT ---
-    // Ładujemy bibliotekę dynamicznie, aby uniknąć błędów konstruktora
     const p24Module = await import('p24');
     
-    // Fail-safe: wybieramy klasę P24 niezależnie od tego, gdzie ją schował kompilator
-    const P24Class = p24Module.default?.P24 || p24Module.P24 || p24Module.default || p24Module;
+    // LOGOWANIE DLA DEBUGOWANIA (zobaczysz to w logach Netlify)
+    console.log("Typ modułu:", typeof p24Module);
+    console.log("Klucze modułu:", Object.keys(p24Module));
+    if (p24Module.default) {
+      console.log("Klucze modułu.default:", Object.keys(p24Module.default));
+    }
 
+    // --- INTELIGENTNY DETEKTOR KONSTRUKTORA ---
+    const findConstructor = (mod) => {
+      if (!mod) return null;
+      // 1. Czy sam moduł jest funkcją?
+      if (typeof mod === 'function') return mod;
+      // 2. Czy default jest funkcją?
+      if (typeof mod.default === 'function') return mod.default;
+      // 3. Czy P24 w module jest funkcją?
+      if (typeof mod.P24 === 'function') return mod.P24;
+      // 4. Czy P24 w default jest funkcją?
+      if (mod.default && typeof mod.default.P24 === 'function') return mod.default.P24;
+      
+      // 5. Przeszukaj klucze modułu w poszukiwaniu jakiejkolwiek klasy/funkcji
+      for (const key of Object.keys(mod)) {
+        if (typeof mod[key] === 'function') return mod[key];
+      }
+      
+      // 6. Przeszukaj klucze default
+      if (mod.default) {
+        for (const key of Object.keys(mod.default)) {
+          if (typeof mod.default[key] === 'function') return mod.default[key];
+        }
+      }
+      return null;
+    };
+
+    const P24Class = findConstructor(p24Module);
+
+    if (!P24Class) {
+      throw new Error("Nie znaleziono konstruktora P24 w zaimportowanym module!");
+    }
+
+    // Tworzymy instancję
     const p24 = new P24Class(
       process.env.P24_MERCHANT_ID,
       process.env.P24_POS_ID,
@@ -19,7 +53,7 @@ export const handler = async (event) => {
       process.env.P24_CRC,
       { sandbox: true }
     );
-    // -----------------------
+    // ------------------------------------------
 
     const { cart, email } = JSON.parse(event.body);
     const productIds = cart.map(item => item.id);
@@ -60,14 +94,18 @@ export const handler = async (event) => {
 
     return {
       statusCode: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
       body: JSON.stringify({ url: `https://sandbox.przelewy24.pl/trnRequest/${result.token}` })
     };
 
   } catch (err) {
-    console.error("Błąd:", err);
+    console.error("Błąd krytyczny płatności:", err.message);
     return {
       statusCode: 500,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ error: err.message })
     };
   }
