@@ -25,7 +25,7 @@ export default function CartBlock({onClose }){
 
             console.log("Inicjalizacja płatności dla koszyka:", cart);
 
-            const response = await fetch('/.netlify/functions/p24-payment', {
+            const response = await fetch('/.netlify/functions/create-checkout', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json' 

@@ -9,7 +9,7 @@ exports.handler = async (event) => {
   }
 
   try {
-  const { cart } = JSON.parse(event.body);
+  const { cart,email } = JSON.parse(event.body);
 
   const productIds = cart.map(item => item.id);
 
@@ -46,7 +46,8 @@ exports.handler = async (event) => {
   .insert([{
     items: cart, 
     total_price: total_amount,
-    status: 'oczekuje_na_platnosc'
+    status: 'oczekuje_na_platnosc',
+    email:email
   }])
   .select()
   .single();
