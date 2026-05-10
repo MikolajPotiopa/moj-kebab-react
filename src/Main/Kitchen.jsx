@@ -23,10 +23,22 @@ export default function Kitchen(){
         const channel = supabase
         .channel('kuchnia_orders')
         .on('postgres_changes',
-            {event: 'INSERT', schema:'public', table:'orders'},
-            (payload) =>{
+            { event: '*', schema: 'public', table: 'orders' }, // Nasłuchujemy na WSZYSTKO (*)
+            (payload) => {
                 console.log('Zmiana w bazie!', payload);
-                setOrders((prevOrders)=> [payload.new,...prevOrders]);
+
+                if (payload.eventType === 'INSERT') {
+                    // Jeśli to całkiem nowy rekord (oczekuje_na_platnosc)
+                    setOrders((prevOrders) => [payload.new, ...prevOrders]);
+                } 
+                else if (payload.eventType === 'UPDATE') {
+                    // Jeśli zmienił się status (np. z 'oczekuje' na 'nowe')
+                    setOrders((prevOrders) => 
+                        prevOrders.map(order => 
+                            order.id === payload.new.id ? payload.new : order
+                        )
+                    );
+                }
             }
         )
         .subscribe();
