@@ -385,3 +385,76 @@ export const burgerNavigationVartiants={
         scale:1.10
     }
 }
+
+
+export const cartBlockEmail={
+    initial:{
+        y:-20,
+        opacity:0
+    },
+    show:{
+        y:0,
+        opacity:1,
+        transition:{duration:"0.3",ease:easeIn}
+    },
+    exit:{
+        y:-20,
+        opacity:0,
+        transition:{duration:"0.3",ease:easeIn}
+    },
+}
+export const addressDetailsFormLeft ={
+    initial:{
+        x:-20,
+        opacity:0,
+        scale:1
+    },
+    show:{
+        x:0,
+        opacity:1,
+        transition:{duration:"0.2",ease:easeIn}
+    },
+    exit:{
+        x:-20,
+        opacity:0,
+        transition:{duration:"0.3",ease:easeIn}
+    } ,
+    hoverState:{
+        scale:1.1
+    }
+}
+export const addressDetailsFormRight ={
+    initial:{
+        x:20,
+        opacity:0,
+        scale:1,
+        rotate:[0,0]
+    },
+    show:{
+        x:0,
+        opacity:1,
+        transition:{duration:"0.2",ease:easeIn}
+    },
+    exit:{
+        x:20,
+        opacity:0,
+        transition:{duration:"0.3",ease:easeIn}
+    },
+    hoverState:{
+        scale:1.1
+    }
+}
+
+export const cartOptions ={
+    initial:{
+        scale:1,
+    },
+    hoverState:{
+        scale:1.2,
+        transition:{duration:"0.1"}
+    },
+    tapState:{
+        scale:0.9,
+        transition:{duration:"0.1"}
+    }
+}

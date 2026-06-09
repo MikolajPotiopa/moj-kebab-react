@@ -9,8 +9,9 @@ exports.handler = async (event) => {
   }
 
   try {
-  const { cart,email } = JSON.parse(event.body);
 
+  const { cart,email,contact } = JSON.parse(event.body);
+    console.log(contact)
   const productIds = cart.map(item => item.id);
 
   const { data: dbProducts, error } = await supabase
@@ -39,7 +40,22 @@ exports.handler = async (event) => {
     quantity: item.qty,
   }});
 
+
+   if (contact !== "false") {
+    line_items.push({
+      price_data: {
+        currency: 'pln',
+        product_data: {
+          name: 'Opłata za kontakt/dostawę',
+        },
+        unit_amount: 1000, // 10,00 PLN
+      },
+      quantity: 1,
+    });
+  }
   const total_amount = line_items.reduce((sum, li) => sum + (li.price_data.unit_amount * li.quantity), 0) / 100;
+     
+
 
   const { data: newOrder, error: dbError } = await supabase
   .from('orders')
@@ -47,7 +63,8 @@ exports.handler = async (event) => {
     items: cart, 
     total_price: total_amount,
     status: 'oczekuje_na_platnosc',
-    email:email
+    email:email,
+    contact:contact
   }])
   .select()
   .single();

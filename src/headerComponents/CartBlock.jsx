@@ -1,9 +1,17 @@
-import { motion } from "framer-motion";
+import { motion, setTarget,AnimatePresence } from "framer-motion";
 import { MdClose } from "react-icons/md";
 import { CartContext } from "../Main/CartContext";
 import CartLine from "./CartLine";
-import { cartBlockCloseBtnVariant,cartBuyBtnVariant } from "../tablesOfData/variants";
 import { useContext, useEffect, useState } from "react";
+import { 
+    cartBlockCloseBtnVariant,
+    cartBuyBtnVariant,
+    cartBlockEmail,
+    addressDetailsFormLeft,
+    addressDetailsFormRight, 
+    } from "../tablesOfData/variants";
+
+
 
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -14,15 +22,63 @@ export default function CartBlock({onClose }){
 
 
     const [emailBlock, setEmailBlock] = useState(false);
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState("");
+
+    const [delivery, setDelivery] = useState(true);
+
+    const[ulica, setUlica] = useState("");
+    const[nrDomu, setNrDomu]= useState("");
+    const[nrMieszkania, setNrMieszkania]= useState("");
+    const[miasto, setMiasto] = useState("");
+    const [wszystkieDane, setWszystkieDane] = useState("false");
+
+
+
+
+
+    const handleButtonCLick =()=>{
+        if(delivery){
+        const dane ="miasto: "+ miasto + " ulica: " + ulica + " nrDomu: " + nrDomu +" nrMieszkania: "+ nrMieszkania;
+        setWszystkieDane(dane);
+        }
+    }
+    useEffect(()=>{
+        handleButtonCLick();
+    },[ulica,nrDomu,nrMieszkania,miasto])
 
     const onEmailClose = () =>{
         setEmailBlock(false);
     }
 
-    const handlePayment = async () => {
-        try {
 
+    const handleButton =()=>{
+        if(email===""){
+            alert("Podaj nr telefonu")
+            return;
+        }
+        if(miasto===""){
+            alert("Podaj miasto")
+            return;
+        }
+        if(ulica===""){
+            alert("Podaj ulicę")
+            return;
+        }
+        if(nrDomu===""){
+            alert("Podaj numer domu")
+            return;
+        }
+
+        handlePayment();
+    }
+
+    
+    const handlePayment = async () => {
+
+        
+        try { 
+
+            
             console.log("Inicjalizacja płatności dla koszyka:", cart);
 
             const response = await fetch('/.netlify/functions/create-checkout', {
@@ -36,7 +92,8 @@ export default function CartBlock({onClose }){
                 qty: item.qty,
                 sauces: item.sauces
                 })),
-                email: email
+                email: email,
+                contact: wszystkieDane
              }),
             });
 
@@ -70,6 +127,9 @@ export default function CartBlock({onClose }){
         const totalSum = cart.reduce((total,item)=> total + (item.qty*item.cost),0);
         setSum(totalSum);
     },[cart])
+
+    
+
     return(
         <motion.div
         className="cartContent"
@@ -108,17 +168,22 @@ export default function CartBlock({onClose }){
                 </div>
             )
             }
+            <AnimatePresence>
             {emailBlock&&(
                 <div
                 className="cartEmail"
                 onClick={()=>onEmailClose()}
                 >
-                    <div
+                    <motion.div
                     className="cartBlockEmail"
                     onClick={(e) =>e.stopPropagation()}
+                    variants={cartBlockEmail}
+                    initial="initial"
+                    exit="exit"
+                    whileInView="show"
                     >
                         <motion.button
-                         className="cartCloseBtn"
+                         className="cartCloseBtns"
                          variants={cartBlockCloseBtnVariant}
                          initial="initial"
                          whileHover="hoverState"
@@ -130,24 +195,77 @@ export default function CartBlock({onClose }){
                         </motion.button>
                         <input 
                         type="email" 
-                        placeholder="Twój e-mail (do potwierdzenia)" 
+                        placeholder=" Numer telefonu " 
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         className="email-input"
                         />
+                        <div className="deliveryMainContainer">
+                            <div className="deliveryOptionRow">
+                                <div className="radioInputWrapper">
+                                    <input type="radio" name="checkBox" onChange={() => setDelivery(false)} />
+                                </div>
+                                <div className="radioLabelText">Odbiór w lokalu</div>
+                            </div>
+                            <div className="deliveryOptionRow">
+                                <div className="radioInputWrapper">
+                                    <input type="radio" name="checkBox" onChange={() => setDelivery(true)} checked={delivery} />
+                                </div>
+                                <div className="radioLabelText">Dostawa +10 zł</div>
+                            </div>
+                            <AnimatePresence>
+                            {delivery && (
+                                <div className="addressDetailsForm">
+                                    <motion.div className="addressInputGroup" variants={addressDetailsFormLeft}
+                                        initial="initial" exit="exit" whileInView="show" whileHover="hoverState"                                         
+                                    >
+                                        <div className="addressInputLabel">Miasto*</div>
+                                        <div className="addressInputFieldWrapper">
+                                            <input type="text" name="miasto" onChange={(e) => setMiasto(e.target.value)} />
+                                        </div>
+                                    </motion.div>
+                                    <motion.div className="addressInputGroup"  variants={addressDetailsFormRight}
+                                        initial="initial" exit="exit" whileInView="show" whileHover="hoverState"  
+                                    >
+                                        <div className="addressInputLabel">Ulica*</div>
+                                        <div className="addressInputFieldWrapper">
+                                            <input type="text" name="ulica" onChange={(e) => setUlica(e.target.value)} />
+                                        </div>
+                                    </motion.div>
+                                    <motion.div className="addressInputGroup"  variants={addressDetailsFormLeft}
+                                        initial="initial" exit="exit" whileInView="show" whileHover="hoverState"      
+                                    >
+                                        <div className="addressInputLabel">Numer domu*</div>
+                                        <div className="addressInputFieldWrapper">
+                                            <input type="text" name="nrDomu" onChange={(e) => setNrDomu(e.target.value)} />
+                                        </div>
+                                    </motion.div>
+                                    <motion.div className="addressInputGroup"  variants={addressDetailsFormRight}
+                                        initial="initial" exit="exit" whileInView="show" whileHover="hoverState"     
+                                    >
+                                        <div className="addressInputLabel">Numer mieszkania</div>
+                                        <div className="addressInputFieldWrapper">
+                                            <input type="text" name="nrMieszkania" onChange={(e) => setNrMieszkania(e.target.value)} />
+                                        </div>
+                                    </motion.div>
+                                </div>
+                            )}
+                        </AnimatePresence>
+                        </div>
                         <motion.button
                         className="emailButtonAccept"
                         variants={cartBuyBtnVariant}
                         initial="initial"
                         whileHover="hoverState"
                         whileTap="tapState"
-                        onClick={()=>handlePayment()}
+                        onClick={()=>handleButton()}
                         >
                         Zamów online</motion.button>
-                    </div>
+                    </motion.div>
                 </div>
             )}
+        </AnimatePresence>
         </motion.div>
     );
 }

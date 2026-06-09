@@ -132,7 +132,9 @@
 
 .dishBoxButton{
     color: black;
-    font-size: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
     width: 120px;
     display: flex;
     justify-content: center;
@@ -145,6 +147,25 @@
     padding-top: 9px;
     padding-bottom: 9px;
     cursor: pointer;
+}
+.dishBoxButtonBlocked {
+    width: 100%;
+    padding: 12px 20px;
+    background: #2c2c2c;        
+    color: #777;               
+    border: 1px solid #444;    
+    border-radius: 12px;      
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: not-allowed;       
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;               
+    box-shadow: none;           
+    pointer-events: none;       
 }
 @media(max-width:550px){
     .menu{

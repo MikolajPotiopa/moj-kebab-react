@@ -10,6 +10,12 @@ exports.handler = async (event) => {
   const sig = event.headers['stripe-signature'];
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
 
+   console.log("--- DEBUG WEBHOOKA ---");
+      console.log("Czy secret istnieje?:", !!secret); 
+      console.log("Secret zaczyna się od:", secret?.substring(0, 10));
+      console.log("Czy sygnatura istnieje?:", !!sig);
+      console.log("Typ body:", typeof event.body);
+      console.log("-----------------------");
 
   let stripeEvent;
 

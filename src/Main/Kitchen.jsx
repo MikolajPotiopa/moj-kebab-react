@@ -1,8 +1,50 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
+import BlockedProducts from "../kitchenComponents/BlockedProducts";
+import BlockButton from "../kitchenComponents/BlockButton";
+
 
 export default function Kitchen(){
+
     const [orders,setOrders]= useState([]);
+    const [products, setProducts] = useState([]);
+
+    const [isBlock, setIsBlock] = useState(false);
+
+        useEffect(()=>{
+                if (isBlock) {
+                    document.body.style.overflow = "hidden";
+                } else {
+                    document.body.style.overflow = "unset";
+                }
+            
+                },[isBlock]);
+
+
+    const getProducts = async ()=>{
+        const {data,error} = await supabase.from('products').select('*');
+        
+        if (error) {
+            console.error("Błąd:", error.message);
+        } else {
+            const fixedProducts = data.map((item, index) => {
+                const realIdKey = Object.keys(item).find(key => key.toLowerCase() === 'id');
+                if(index == 0){
+                   return {
+                    
+                        ...item,
+                        id: 0 
+                    }; 
+                }
+                return {
+                    ...item,
+                    id: item[realIdKey] || (index + 1) 
+                };
+            });
+
+        setProducts(fixedProducts);
+    };
+}
 
     const getOrders = async () =>{
         const {data, error} = await supabase
@@ -19,20 +61,21 @@ export default function Kitchen(){
     };
 
     useEffect(()=>{
-        getOrders();    
+        getOrders();
+        getProducts();
         const channel = supabase
         .channel('kuchnia_orders')
         .on('postgres_changes',
-            { event: '*', schema: 'public', table: 'orders' }, // Nasłuchujemy na WSZYSTKO (*)
+            { event: '*', schema: 'public', table: 'orders' }, 
             (payload) => {
                 console.log('Zmiana w bazie!', payload);
 
                 if (payload.eventType === 'INSERT') {
-                    // Jeśli to całkiem nowy rekord (oczekuje_na_platnosc)
+
                     setOrders((prevOrders) => [payload.new, ...prevOrders]);
                 } 
                 else if (payload.eventType === 'UPDATE') {
-                    // Jeśli zmienił się status (np. z 'oczekuje' na 'nowe')
+
                     setOrders((prevOrders) => 
                         prevOrders.map(order => 
                             order.id === payload.new.id ? payload.new : order
@@ -45,8 +88,15 @@ export default function Kitchen(){
 
         return () => supabase.removeChannel(channel);
     },[])
+
     
 
+
+    const getProductName = (productId)=>{
+        const product = products.find(p=> p.id == productId);
+
+        return product ? product.title : 'Ładowanie...'
+    }
 
 
     //haslo
@@ -79,7 +129,6 @@ export default function Kitchen(){
     } else{
         setOrders(prevOrders => 
         prevOrders.map(order => 
-            // Jeśli to jest to zamówienie, które właśnie kliknęliśmy, zmień mu status
             order.id === orderId ? { ...order, status: 'zrobione' } : order
         )
     );
@@ -141,12 +190,21 @@ export default function Kitchen(){
                         <ul className="order-ul">
                             {order.items.map((item,id)=>(  
                                 <li className="order-li" key={id}>
-                                    <div className="orderName">{item.name}</div><div className="orderSize">{item.size}</div> <div className="orderQty">{item.qty}x</div>  <div className="orderSauces">Sosy: {item.sauces}</div>
+                                    <div className="orderName">{getProductName(item.id)}</div><div className="orderSize">{item.size}</div> <div className="orderQty">{item.qty}x</div>  <div className="orderSauces">Sosy: {item.sauces}</div>
                                 </li>    
                             ))}
                         </ul>
                         <div className="orderSauces">
                             {` ${order.email}`}
+                            
+                            
+                        </div>
+                        <div>
+                            {order.contact !== "false"?(
+                                ` ${order.contact}`
+                            ):(
+                                "Do odbioru w lokalu"
+                            )}
                         </div>
                         <div className="orderStatus">{order.status}</div>
                         {order.status !== 'zrobione' &&(
@@ -155,7 +213,26 @@ export default function Kitchen(){
 
                     </div>
                     ))}
-                
+                {
+                    isBlock &&
+                    (
+                    <BlockedProducts
+                    onClose={()=>setIsBlock(false)}
+                    >
+
+                    </BlockedProducts>
+                    )
+                    
+                }
+                <div
+                    className="openBtnBox" 
+                >
+                    <BlockButton
+                    onOpen={()=>setIsBlock(true)}
+                    >
+
+                    </BlockButton>
+                </div>
                 
 
             </div>
