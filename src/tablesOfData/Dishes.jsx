@@ -2,7 +2,7 @@ export const menuData = [
     {
         id: 0,
         kategoria: "Lawasze",
-        src: "/Img/lawasz1.png",
+        src: "/Img/lawasz1.webp",
         alt: "Lawasz kurczak",
         title: "Lawasz kurczak z ekologicznego drobiu",
         description: "Lawasz z kurczakiem w domowej tortilli z dodatkiem świeżej sałaty oraz chrupiących warzyw.",
@@ -17,7 +17,7 @@ export const menuData = [
     {
         id: 1,
         kategoria: "Lawasze",
-        src: "/Img/lawasz2.png",
+        src: "/Img/lawasz2.webp",
         alt: "Lawasz wołowina",
         title: "Lawasz wołowina Premium",
         description: "Lawasz ze świeżą wołowiną w domowej tortilli z dodatkiem sałaty, czerwonej cebuli i ogórka.",
@@ -32,7 +32,7 @@ export const menuData = [
     {
         id: 2,
         kategoria: "Lawasze",
-        src: "/Img/lawasz3.png",
+        src: "/Img/lawasz3.webp",
         alt: "Lawasz Wege",
         title: "Lawasz Wege Falafel",
         description: "Chrupiące kotleciki z ciecierzycy w tortilli z hummusem i zestawem świeżych surówek.",
@@ -47,7 +47,7 @@ export const menuData = [
     {
         id: 3,
         kategoria: "Bułki",
-        src: "/Img/bulka1.png",
+        src: "/Img/bulka1.webp",
         alt: "Kebab bułka kurczak",
         title: "Kebab w chrupiącej bułce - Kurczak",
         description: "Wypiekana na miejscu bułka wypełniona soczystym kurczakiem i autorskim sosem czosnkowym.",
@@ -60,7 +60,7 @@ export const menuData = [
     {
         id: 4,
         kategoria: "Bułki",
-        src: "/Img/bulka2.png",
+        src: "/Img/bulka2.webp",
         alt: "Kebab bułka wołowina",
         title: "Kebab w chrupiącej bułce - Wołowina",
         description: "Tradycyjna bułka z dużą ilością opiekanej wołowiny, kapustą pekińską i pomidorem.",
@@ -73,7 +73,7 @@ export const menuData = [
     {
         id: 5,
         kategoria: "Bułki",
-        src: "/Img/bulka3.png",
+        src: "/Img/bulka3.webp",
         alt: "Kebab bułka mix",
         title: "Kebab w bułce Mega Mix",
         description: "Połączenie dwóch rodzajów mięs w jednej bułce z miksem wszystkich dostępnych sosów.",
@@ -86,7 +86,7 @@ export const menuData = [
     {
         id: 6,
         kategoria: "Burgery",
-        src: "/Img/burger1.png",
+        src: "/Img/burger1.webp",
         alt: "Burger Klasyczny",
         title: "Burger Klasyk Wołowy",
         description: "100% wołowiny, ser cheddar, ogórek kiszony, cebula i klasyczny sos burgerowy w bułce maślanej.",
@@ -98,7 +98,7 @@ export const menuData = [
     {
         id: 7,
         kategoria: "Burgery",
-        src: "/Img/burger2.png",
+        src: "/Img/burger2.webp",
         alt: "Burger BBQ",
         title: "Burger BBQ Bacon",
         description: "Soczysta wołowina, chrupiący boczek, krążki cebulowe i dymny sos BBQ.",
@@ -110,7 +110,7 @@ export const menuData = [
     {
         id: 8,
         kategoria: "Burgery",
-        src: "/Img/burger3.png",
+        src: "/Img/burger3.webp",
         alt: "Burger Ognisty",
         title: "Burger Ognisty Smok",
         description: "Pikantny burger z papryczkami jalapeno, ostrym serem i sosem sriracha-mayo.",
@@ -122,7 +122,7 @@ export const menuData = [
     {
         id: 9,
         kategoria: "Dodatki",
-        src: "/Img/frytki_belgijskie.png",
+        src: "/Img/frytki_belgijskie.webp",
         alt: "Frytki belgijskie",
         title: "Złociste Frytki Belgijskie",
         description: "Grubo cięte, dwukrotnie smażone frytki podawane z solą morską i wybranym sosem.",
@@ -135,7 +135,7 @@ export const menuData = [
     {
         id: 11,
         kategoria: "Dodatki",
-        src: "/Img/frytki_klasyk.png",
+        src: "/Img/frytki_klasyk.webp",
         alt: "Frytki klasyczne",
         title: "Frytki Klasyczne",
         description: "Cienkie, chrupiące frytki, idealnie doprawione solą.",
@@ -148,7 +148,7 @@ export const menuData = [
     {
         id: 10,
         kategoria: "Dodatki",
-        src: "/Img/salatka_coleslaw.png",
+        src: "/Img/salatka_coleslaw.webp",
         alt: "Surówka Coleslaw",
         title: "Domowa Surówka Coleslaw",
         description: "Klasyczna surówka z białej kapusty i marchewki w kremowym sosie majonezowym.",
@@ -160,7 +160,7 @@ export const menuData = [
     {
         id: 12,
         kategoria: "Dodatki",
-        src: "/Img/salatka_grecka.png",
+        src: "/Img/salatka_grecka.webp",
         alt: "Sałatka Grecka",
         title: "Sałatka Grecka Mini",
         description: "Świeży ogórek, pomidor, oliwki i ser feta z sosem vinegret.",
@@ -172,7 +172,7 @@ export const menuData = [
     {
         id: 13,
         kategoria: "Napoje",
-        src: "/Img/cola.png",
+        src: "/Img/cola.webp",
         alt: "Coca Cola",
         title: "Coca-Cola 0.33l",
         description: "",
@@ -184,7 +184,7 @@ export const menuData = [
     {
         id: 14,
         kategoria: "Napoje",
-        src: "/Img/fanta.png",
+        src: "/Img/fanta.webp",
         alt: "Fanta",
         title: "Fanta 0.33l",
         description: "",
@@ -196,7 +196,7 @@ export const menuData = [
     {
         id: 15,
         kategoria: "Napoje",
-        src: "/Img/sprite.png",
+        src: "/Img/sprite.webp",
         alt: "Sprite",
         title: "Sprite 0.33l",
         description: "",
@@ -208,7 +208,7 @@ export const menuData = [
     {
         id: 16,
         kategoria: "Napoje",
-        src: "/Img/woda_gaz.png",
+        src: "/Img/woda_gaz.webp",
         alt: "Woda gazowana",
         title: "Woda Gazowana 0.5l",
         description: "",
@@ -220,7 +220,7 @@ export const menuData = [
     {
         id: 17,
         kategoria: "Napoje",
-        src: "/Img/woda_niegaz.png",
+        src: "/Img/woda_niegaz.webp",
         alt: "Woda niegazowana",
         title: "Woda Niegazowana 0.5l",
         description: "",
@@ -232,7 +232,7 @@ export const menuData = [
     {
         id: 18,
         kategoria: "Napoje",
-        src: "/Img/sok_wyciskany.png",
+        src: "/Img/sok_wyciskany.webp",
         alt: "Sok wyciskany",
         title: "Świeżo wyciskany sok pomarańczowy",
         description: "",

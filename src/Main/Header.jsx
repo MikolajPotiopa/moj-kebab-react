@@ -96,7 +96,7 @@ export default function Header()
         <div className="header">
             <BurgerBlock isOpen={isBurgerClicked} onClose={()=>setBurgerClicked(false)} ></BurgerBlock>
             <div className="topHeader">
-                <Img className={'headerImg'} imgSrc={'/Img/HeaderIcon2.png'} imgAlt={'logo'}></Img>
+                <Img className={'headerImg'} imgSrc={'/Img/HeaderIcon2.webp'} imgAlt={'logo'}></Img>
                 {!shouldBurger ?(
                     <>
                         <div className="navigationBar">
@@ -124,7 +124,7 @@ export default function Header()
                     exit={{y:-100}}
                     transition={{duration:0.3}}
                     >
-                        <Img className={'headerImg'} imgSrc={'/Img/HeaderIcon2.png'} imgAlt={'logo'}></Img>
+                        <Img className={'headerImg'} imgSrc={'/Img/HeaderIcon2.webp'} imgAlt={'logo'}></Img>
                         {!shouldBurger ?(
                         <>
                             <div className="navigationBar">
