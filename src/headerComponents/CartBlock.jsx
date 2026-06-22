@@ -45,6 +45,9 @@ export default function CartBlock({onClose }){
     useEffect(()=>{
         handleButtonCLick();
     },[ulica,nrDomu,nrMieszkania,miasto])
+    useEffect(()=>{
+        setWszystkieDane("false");
+    },[delivery])
 
     const onEmailClose = () =>{
         setEmailBlock(false);
@@ -52,22 +55,25 @@ export default function CartBlock({onClose }){
 
 
     const handleButton =()=>{
-        if(email===""){
+        if(delivery){
+            if(email===""){
             alert("Podaj nr telefonu")
             return;
+            }
+            if(miasto===""){
+                alert("Podaj miasto")
+                return;
+            }
+            if(ulica===""){
+                alert("Podaj ulicę")
+                return;
+            }
+            if(nrDomu===""){
+                alert("Podaj numer domu")
+                return;
+            }
         }
-        if(miasto===""){
-            alert("Podaj miasto")
-            return;
-        }
-        if(ulica===""){
-            alert("Podaj ulicę")
-            return;
-        }
-        if(nrDomu===""){
-            alert("Podaj numer domu")
-            return;
-        }
+        
 
         handlePayment();
     }
