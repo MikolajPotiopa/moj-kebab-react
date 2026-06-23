@@ -27,7 +27,6 @@ export const scrollInto = (id) =>{
          const element = document.getElementsByClassName(id);
          const oneElement = element[0];
          if(oneElement){
-            console.log(oneElement);
             oneElement.scrollIntoView({behavior:"smooth"});
          }
     }

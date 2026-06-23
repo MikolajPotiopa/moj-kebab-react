@@ -78,8 +78,8 @@ exports.handler = async (event) => {
     metadata:{
       order_id: newOrder.id.toString()
     },
-    success_url: `${process.env.URL}/succes`, // Gdzie wrócić po zapłaceniu
-    cancel_url: `${process.env.URL}/`, // Gdzie wrócić po rezygnacji
+    success_url: `${process.env.SITE_URL}/succes`, // Gdzie wrócić po zapłaceniu
+    cancel_url: `${process.env.SITE_URL}/`, // Gdzie wrócić po rezygnacji
   });
 
     return {

@@ -13,6 +13,7 @@ export function CartProvider({children}){
 
     useEffect(()=>{
         localStorage.setItem('kebab_cart',JSON.stringify(cart));
+
     },[cart])
     const addToCart = (product)=>{
         const isExist = cart.find(item => item.id === product.id && 

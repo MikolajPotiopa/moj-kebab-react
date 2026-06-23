@@ -11,10 +11,7 @@ export default function DishInfo({dish})
     const {productsC,getNotAvailable} = useProduct();
     
     const product = productsC.find( (item)=>{return item.id === dish.id;}  );
-    useEffect(()=>{
-        console.log("produkty:")
-        console.log(product?.available)
-    },[product])
+ 
 
 
     const[isModalOpen, setModalOpen] = useState(false);

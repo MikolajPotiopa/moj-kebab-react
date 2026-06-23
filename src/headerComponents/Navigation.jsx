@@ -5,9 +5,7 @@ export default function TopNav({value,dir,variant })
     const scroll = (id) =>{
          const element = document.getElementsByClassName(id);
          const oneElement = element[0];
-         console.log(element);
          if(oneElement){
-            console.log(oneElement);
             oneElement.scrollIntoView({behavior:"smooth"});
          }
     }

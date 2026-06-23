@@ -35,6 +35,7 @@ export default function ModalBlock({onClose,dish}){
             cost: selectedSize[1],
             sauces: selectedSauces
         };
+        console.log(cartPosition);
         return cartPosition;
     }
 

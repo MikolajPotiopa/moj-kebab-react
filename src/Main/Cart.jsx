@@ -6,7 +6,6 @@ import CartBlock from "../headerComponents/CartBlock";
 export default function Cart({onClose,isOpen}){
  
     useEffect(()=>{
-            console.log(isOpen);
 
              if (isOpen) {
                 document.body.classList.add('no-scroll');

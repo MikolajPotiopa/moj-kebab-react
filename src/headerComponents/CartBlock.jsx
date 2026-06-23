@@ -152,8 +152,8 @@ export default function CartBlock({onClose }){
                 <MdClose size={30} className="cartIcon"/>
             </motion.button>
             <ul>
-                {cart.map(item=>(
-                    <CartLine dish={item} key={item.id}></CartLine>
+                {cart.map((item ,id)=>(
+                    <CartLine dish={item} key={id}></CartLine>
                 ))}
             </ul>
             

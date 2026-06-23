@@ -6,6 +6,7 @@ import { useProduct } from "./ProductsContext";
 import { CgCloseO } from "react-icons/cg";
 
 
+
 export default function BlockedProducts({onClose}){
     const [products, setProducts] = useState([]);
     const [filtredProducts, setFiltredProducts] = useState([]);

@@ -9,6 +9,15 @@ export default function Kitchen(){
     const [orders,setOrders]= useState([]);
     const [products, setProducts] = useState([]);
 
+
+
+
+
+
+
+    useEffect(()=>{
+        console.log(products)
+    },[products])
     const [isBlock, setIsBlock] = useState(false);
 
         useEffect(()=>{
@@ -55,7 +64,6 @@ export default function Kitchen(){
         if (error) {
             console.error("Błąd Supabase:", error.message);
         } else {
-            console.log("Dane odebrane:", data); 
             setOrders(data || []);
         }
     };
@@ -68,7 +76,6 @@ export default function Kitchen(){
         .on('postgres_changes',
             { event: '*', schema: 'public', table: 'orders' }, 
             (payload) => {
-                console.log('Zmiana w bazie!', payload);
 
                 if (payload.eventType === 'INSERT') {
 
@@ -93,6 +100,15 @@ export default function Kitchen(){
 
 
     const getProductName = (productId)=>{
+        if(productId === 0 ){
+            return "Lawasz kurczak z ekologicznego drobiu"
+        }
+        if(productId === 7){
+            return "Burger BBQ Bacon"
+        }
+        if(productId === 12){
+            return "Sałatka Grecka Mini"
+        }
         const product = products.find(p=> p.id == productId);
 
         return product ? product.title : 'Ładowanie...'
@@ -190,7 +206,15 @@ export default function Kitchen(){
                         <ul className="order-ul">
                             {order.items.map((item,id)=>(  
                                 <li className="order-li" key={id}>
-                                    <div className="orderName">{getProductName(item.id)}</div><div className="orderSize">{item.size}</div> <div className="orderQty">{item.qty}x</div>  <div className="orderSauces">Sosy: {item.sauces}</div>
+                                    <div className="orderName">{getProductName(item.id)}</div>
+                                    <div className="orderSize">{item.size}</div> 
+                                    <div className="orderQty">{item.qty}x</div>  
+                                    {item.sauces.length > 0 ?
+                                    (<div className="orderSauces">Sosy: {item.sauces}</div>)
+                                    :
+                                    (<div className="orderSauces">Brak dodatkowych informacji</div>)
+                                    }
+                                    
                                 </li>    
                             ))}
                         </ul>

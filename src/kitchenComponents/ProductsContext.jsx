@@ -38,12 +38,7 @@ export function ProductsProvider({ children }) {
         return () => supabase.removeChannel(channel);
     }, []);
 
-    useEffect(()=>{
-        productsC.map(item=>{
-            console.log(item.available);
-        })
-       console.log(productsC)
-    },[productsC])
+
     const getNotAvailable = ()=>{
         const filtredProducts = productsC.filter(p => !p.available);
         return filtredProducts;

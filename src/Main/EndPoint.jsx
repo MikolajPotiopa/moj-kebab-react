@@ -12,8 +12,8 @@ export default function EndPoint(){
         <div className="succesBlock">
             <div className="succesBlockTitle">Płatność udana</div>
             <div className="succesBlockSubTitle">Dziękujemy za zakup</div>
-            <div className="succesBlockDescritpion">Zamóienie do odebrania będzie pod adresem Lokalu</div>
-            <div className="succesBlockAdres">ADRES</div>
+            <div className="succesBlockDescritpion">Przy jakich kolwiek uwagach prosze zgłosić się pod numer 991 992 993 </div>
+            <div className="succesBlockAdres">ADRES: Plaża miłosna</div>
             <a href="/">Wróć na stronę</a>
         </div>
     );
